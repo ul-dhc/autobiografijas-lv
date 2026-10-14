@@ -17,6 +17,7 @@ const languageOverrides = await read('language-overrides.json');
 const workbookSupplement = await read('workbook-public-supplement.json');
 const contentCorrections = await read('public-content-corrections.json');
 const manuscriptImages = JSON.parse(await readFile(new URL('src/data/manuscript-images.json', root), 'utf8'));
+const englishTitles = JSON.parse(await readFile(new URL('src/data/collection-titles-en.json', root), 'utf8'));
 const englishDescriptions = JSON.parse(await readFile(new URL('src/data/collection-descriptions-en.json', root), 'utf8')); 
 const clean = value => (value ?? '').replace(/\u00a0/g, ' ').trim();
 const idOf = url => {
@@ -138,7 +139,7 @@ const publicCollections = collections.map(collection => {
     id: collection.id,
     number: collection.number,
     reference: collection.reference,
-    title: collection.title,
+    title: { ...collection.title, en: englishTitles[collection.id] ?? collection.title.en },
     shortDescription: {
       ...collection.shortDescription,
       en: collection.shortDescription.lv ? englishDescriptions[collection.id] ?? collection.shortDescription.en : collection.shortDescription.en,

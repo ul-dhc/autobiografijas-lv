@@ -9,7 +9,7 @@ const en = lang === "en";
 const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' : '') : ''}#${id}`;
 ---
 <header class={"shell masthead"} data-mobile-header>
-  <button class="mobile-menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" data-menu-toggle hidden><span class="menu-open-icon"><LucideIcon name="menu" /></span><span class="menu-close-icon"><LucideIcon name="x" /></span>{en ? "Menu" : "Izvēlne"}</button>
+  <button class="mobile-menu-toggle" type="button" aria-label={en ? "Open menu" : "Atvērt izvēlni"} aria-controls="main-navigation" aria-expanded="false" data-menu-toggle hidden><span class="menu-open-icon"><LucideIcon name="menu" /></span><span class="menu-close-icon"><LucideIcon name="x" /></span></button>
   <nav id="main-navigation" aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
     {Astro.props.subpage && <a href={localUrl(en ? 'en/' : '')}>{en ? 'Home' : 'Sākums'}</a>}
     <a href={catalogueUrl(lang)} aria-current={Astro.props.subpage ? 'page' : undefined}>
@@ -46,6 +46,7 @@ const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' 
     const setOpen = (open: boolean) => {
       header.dataset.menuOpen = String(open);
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', document.documentElement.lang === 'en' ? (open ? 'Close menu' : 'Open menu') : (open ? 'Aizvērt izvēlni' : 'Atvērt izvēlni'));
     };
     setOpen(false);
     toggle.hidden = false;
