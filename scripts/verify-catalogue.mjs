@@ -3,6 +3,7 @@ import { readFile, access } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { collectionSlug } from '../src/data/collection-slug.mjs';
 const data = JSON.parse(await readFile('src/data/collections.json', 'utf8'));
+const manuscriptImages = JSON.parse(await readFile('src/data/manuscript-images.json', 'utf8'));
 const base = ('/' + (process.env.BASE_PATH || '/').replace(/^\/+|\/+$/g, '') + '/').replace(/\/+/g, '/');
 const expectedFields = ['id', 'number', 'reference', 'title', 'shortDescription', 'languages', 'writingPeriod', 'materialTypes', 'authors', 'submitters', 'image', 'garamantasUrl'];
 assert.equal(data.collections.length, 241);
@@ -11,6 +12,12 @@ const corroboration = JSON.parse(await readFile('docs/collections/workbook-publi
 for (const collection of data.collections) {
   assert.deepEqual(Object.keys(collection), expectedFields, 'Public schema excludes private and technical fields');
   assert.deepEqual(collection.submitters, corroboration[collection.number]?.confirmedSubmitters ?? []);
+  assert.equal(collection.image?.url ?? null, manuscriptImages[collection.id]?.url ?? null, 'Covers use verified public manuscript pages');
+  if (collection.image) {
+    assert.equal(new URL(collection.image.url).hostname, 'media.garamantas.lv');
+    assert.ok(!/-t\./.test(collection.image.url), 'Cover uses the manuscript image rather than its thumbnail');
+    assert.equal(collection.image.alt, `Manuskripta pirmā lapa: ${collection.title.lv}`);
+  }
 }
 assert.deepEqual(data.collections.find(c => c.id === '1119255').authors, [], 'An unnamed collection must not reveal an identity from authenticated metadata');
 assert.deepEqual(data.collections.find(c => c.id === '1153249').authors, [], 'A first-name-only collection must not reveal a fuller identity');

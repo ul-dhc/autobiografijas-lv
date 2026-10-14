@@ -16,6 +16,7 @@ const [lv, en, details] = await Promise.all([
 const languageOverrides = await read('language-overrides.json');
 const workbookSupplement = await read('workbook-public-supplement.json');
 const contentCorrections = await read('public-content-corrections.json');
+const manuscriptImages = JSON.parse(await readFile(new URL('src/data/manuscript-images.json', root), 'utf8'));
 const englishDescriptions = JSON.parse(await readFile(new URL('src/data/collection-descriptions-en.json', root), 'utf8')); 
 const clean = value => (value ?? '').replace(/\u00a0/g, ' ').trim();
 const idOf = url => {
@@ -132,7 +133,7 @@ const publicCollections = collections.map(collection => {
   const authors = [...new Set(collection.personsByRole
     .filter(group => ['Autors', 'Pierakstītājs'].includes(group.role))
     .flatMap(group => group.people.map(person => person.name)).filter(publicName))];
-  const image = collection.imageCandidates[0];
+  const image = manuscriptImages[collection.id];
   return {
     id: collection.id,
     number: collection.number,
@@ -147,7 +148,7 @@ const publicCollections = collections.map(collection => {
     materialTypes: supplement?.materialTypes ?? [],
     authors,
     submitters: supplement?.confirmedSubmitters ?? [],
-    image: image ? { url: image.url, alt: `Attēls no kolekcijas “${collection.title.lv}”` } : null,
+    image: image ? { url: image.url, alt: `Manuskripta pirmā lapa: ${collection.title.lv}` } : null,
     garamantasUrl: { lv: collection.source.lv, en: collection.source.en },
   };
 });
@@ -158,6 +159,7 @@ for (const collection of publicCollections) {
   assert.ok(!/@/.test(JSON.stringify(collection)), 'No email addresses in public output');
 }
 const catalogue = { collections: publicCollections };
+summary.manuscriptFirstPages = publicCollections.filter(collection => collection.image).length;
 const output = new URL('src/data/collections.json', root);
 await writeFile(output, `${JSON.stringify(catalogue, null, 2)}\n`);
 const progress = {
@@ -175,7 +177,7 @@ const progress = {
   notes: [
     'Short descriptions only; missing descriptions remain null.',
     'English view may repeat Latvian. Identical descriptions are not counted as English translations.',
-    'Image candidates are source URLs. Cover selection and image downloads have not been performed.',
+    'Covers embed verified anonymous-public manuscript first-page media URLs; gallery photographs are not used.',
     'Authenticated browsing does not establish anonymous public access. File counts are not access evidence.',
     'Contribution invitation applies only to Pandemic diaries, per user instruction.',
   ],

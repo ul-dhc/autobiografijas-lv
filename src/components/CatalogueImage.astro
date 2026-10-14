@@ -6,7 +6,7 @@ interface Props { collection: ArchiveCollection; lang: Lang; eager?: boolean; }
 const { collection, lang, eager = false } = Astro.props;
 ---
 <div class="catalogue-image" data-catalogue-image>
-  {collection.image && <img src={collection.image.url} alt={lang === 'en' ? `Image from the collection “${collection.title.en || collection.title.lv}”` : collection.image.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" width="640" height="480" />}
+  {collection.image && <img src={collection.image.url} alt={lang === 'en' ? `First manuscript page: ${collection.title.en || collection.title.lv}` : collection.image.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" width="640" height="480" />}
   <div class="catalogue-image-fallback" hidden={Boolean(collection.image)} aria-hidden="true">
     <LucideIcon name="file-text" />
     <span>{collection.reference}</span>
