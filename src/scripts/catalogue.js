@@ -5,6 +5,8 @@ if (root) {
   const en = root.dataset.lang === 'en';
   const form = root.querySelector('[data-catalogue-controls]');
   const query = form.querySelector('[name=q]');
+  const mobileCatalogue = matchMedia('(max-width: 650px)');
+  const filterToggle = form.querySelector('[data-filter-toggle]');
   const types = [...form.querySelectorAll('[name=type]')];
   const selectedTypes = () => types.filter(input => input.checked).map(input => input.value);
   const sort = form.querySelector('[name=sort]');
@@ -34,7 +36,7 @@ if (root) {
     const requestedTypes = params.getAll('type').flatMap(value => value.split(','));
     types.forEach(input => { input.checked = requestedTypes.includes(input.value); });
     sort.value = optionExists(sort, params.get('sort')) ? params.get('sort') : 'number';
-    view = params.get('view') === 'list' ? 'list' : 'grid';
+    view = !mobileCatalogue.matches && params.get('view') === 'list' ? 'list' : 'grid';
     const requested = Number(params.get('limit'));
     limit = Number.isFinite(requested) && requested >= 24 ? Math.min(cards.length, requested) : 24;
   };
@@ -71,7 +73,12 @@ if (root) {
       button.title = isPinned ? (en ? 'Unpin' : 'Atspraust') : (en ? 'Pin to top' : 'Piespraust sākumā');
     });
     matches.forEach((card, index) => { card.hidden = index >= limit; grid.append(card); });
+    if (mobileCatalogue.matches) view = 'grid';
     grid.dataset.view = view;
+    const activeFilterCount = selectedTypes().length + Number(sort.value !== 'number');
+    const filterCount = form.querySelector('[data-filter-count]');
+    filterCount.textContent = String(activeFilterCount);
+    filterCount.hidden = !activeFilterCount;
     viewButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogueView === view)));
     const found = matches.length;
     count.textContent = en ? `${found} ${found === 1 ? 'collection' : 'collections'}` : `Atrastas kolekcijas: ${found}`;
@@ -209,6 +216,13 @@ if (root) {
   });
   readUrl();
   form.hidden = false;
+  filterToggle.hidden = false;
+  filterToggle.addEventListener('click', () => {
+    const open = filterToggle.getAttribute('aria-expanded') !== 'true';
+    filterToggle.setAttribute('aria-expanded', String(open));
+    form.dataset.mobileFiltersOpen = String(open);
+  });
+  mobileCatalogue.addEventListener('change', () => { if (mobileCatalogue.matches) view = 'grid'; render(); });
   root.querySelector('[data-catalogue-actions]').hidden = false;
   render();
   openAnchor();

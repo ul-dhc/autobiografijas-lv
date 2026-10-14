@@ -42,5 +42,13 @@
   "arrow-up": {
     "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-up.svg",
     "body": "<path d=\"m5 12 7-7 7 7\" /><path d=\"M12 19V5\" />"
+  },
+  "menu": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/menu.svg",
+    "body": "<path d=\"M4 5h16\" /><path d=\"M4 12h16\" /><path d=\"M4 19h16\" />"
+  },
+  "x": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/x.svg",
+    "body": "<path d=\"M18 6 6 18\" /><path d=\"m6 6 12 12\" />"
   }
 }

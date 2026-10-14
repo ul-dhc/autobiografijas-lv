@@ -78,3 +78,24 @@
 @media(max-width:650px){.catalogue-card-title{gap:5px}.catalogue-card-tools{gap:0}.catalogue-pin,.catalogue-card-tools .catalogue-copy-link{width:30px}}
 /* Reordering cards must not trigger browser scroll anchoring elsewhere on the page. */
 html:has([data-catalogue]){overflow-anchor:none}
+
+.catalogue-filter-toggle{display:none}
+@media(max-width:650px){
+  .catalogue-controls{padding:16px;gap:10px;border-radius:16px}
+  .catalogue-controls input,.catalogue-controls select{min-height:46px;font-size:1rem}
+  .catalogue-input-wrap>svg{top:13px}
+  .catalogue-search-field label{font-size:.875rem;margin-bottom:7px}
+  .catalogue-filter-toggle:not([hidden]){display:inline-flex;align-items:center;justify-self:start;gap:8px;min-height:44px;padding:8px 10px;background:white;color:var(--accent);border:1px solid #d7cdd9;border-radius:10px;font:500 .875rem var(--sans);cursor:pointer}
+  .catalogue-filter-toggle .lucide-icon{width:16px;height:16px;transform:rotate(90deg)}
+  .catalogue-filter-toggle[aria-expanded=true] .lucide-icon{transform:rotate(-90deg)}
+  .catalogue-filter-toggle [data-filter-count]{border-radius:50%;background:var(--accent);color:white;min-width:20px;height:20px;display:grid;place-items:center;font-size:.75rem}
+  .catalogue-controls[data-mobile-filters-open=false] .catalogue-type-options,.catalogue-controls[data-mobile-filters-open=false] .catalogue-sorting{display:none}
+  .catalogue-controls[data-mobile-filters-open=true] .catalogue-type-options{padding-top:10px;border-top:1px solid #e1d8e5}
+  .catalogue-controls .catalogue-type-options label{min-height:38px;margin-bottom:0}
+  .catalogue-results-bar{flex-wrap:wrap;gap:10px;margin:18px 0}
+  .catalogue-result-actions{flex-wrap:wrap;gap:8px;margin-left:auto}
+  .catalogue-view{display:none}
+  .catalogue-grid[data-view=grid]{gap:18px}
+}
+@media(max-width:650px){.catalogue-heading>div{min-width:0}.catalogue-total{flex-shrink:0}}
+@media(max-width:380px){.catalogue-heading{gap:16px}.catalogue h1{font-size:2.25rem}.catalogue-total{min-width:72px;min-height:84px}.catalogue-total strong{font-size:2.125rem}}

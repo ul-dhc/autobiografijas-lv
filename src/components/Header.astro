@@ -1,4 +1,5 @@
 ---
+import LucideIcon from "./LucideIcon.astro";
 import type { Lang } from "../data/urls";
 import { localUrl } from "../data/urls";
 import { catalogueUrl } from '../data/catalogue';
@@ -7,8 +8,9 @@ const { lang } = Astro.props;
 const en = lang === "en";
 const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' : '') : ''}#${id}`;
 ---
-<header class={"shell masthead"}>
-  <nav aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
+<header class={"shell masthead"} data-mobile-header>
+  <button class="mobile-menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" data-menu-toggle hidden><span class="menu-open-icon"><LucideIcon name="menu" /></span><span class="menu-close-icon"><LucideIcon name="x" /></span>{en ? "Menu" : "Izvēlne"}</button>
+  <nav id="main-navigation" aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
     {Astro.props.subpage && <a href={localUrl(en ? 'en/' : '')}>{en ? 'Home' : 'Sākums'}</a>}
     <a href={catalogueUrl(lang)} aria-current={Astro.props.subpage ? 'page' : undefined}>
       {en ? "Collections" : "Kolekcijas"}
@@ -35,3 +37,27 @@ const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' 
     </a>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-mobile-header]');
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  if (header && toggle) {
+    const mobile = matchMedia('(max-width: 850px)');
+    const setOpen = (open: boolean) => {
+      header.dataset.menuOpen = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    setOpen(false);
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    header.querySelectorAll('nav a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('click', event => { if (!header.contains(event.target as Node)) setOpen(false); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    mobile.addEventListener('change', () => setOpen(false));
+  }
+</script>
