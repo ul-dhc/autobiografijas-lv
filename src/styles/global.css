@@ -131,19 +131,25 @@ html[data-text-size="large"] .collection-grid{grid-template-columns:repeat(3,min
 @media(max-width:700px){.hero{grid-template-columns:minmax(0,1fr);padding-top:30px;padding-bottom:32px;gap:32px}.album{max-width:440px;margin:0 auto;gap:20px}.album figure>a{height:260px}}
 @media(max-width:380px){.album{gap:16px}.album figure>a{height:210px}}
 
-/* An archival collage changes its arrangement on each page load. */
-.hero .album{position:relative;display:block;height:430px;max-width:510px;isolation:isolate}
-.hero .album::before{content:"";position:absolute;inset:45px 10px 35px 20px;background:#f0edf4;border-radius:48% 52% 44% 56%;z-index:-1}
-.hero .album figure{position:absolute;width:53%;margin:0;background:white;padding:10px;border-radius:12px;box-shadow:0 15px 35px rgb(53 80 112 / .16);transition:transform .25s ease}
-.hero .album .album-cover{left:4%;top:12px;transform:rotate(-8deg);z-index:2}
-.hero .album .album-child{right:2%;top:95px;transform:rotate(7deg);z-index:1}
-.hero .album figure>a{height:300px;border-radius:5px;overflow:hidden}
-.hero .album[data-collage="1"] .album-cover{left:0;top:70px;transform:rotate(-5deg)}
-.hero .album[data-collage="1"] .album-child{right:0;top:10px;transform:rotate(10deg)}
-.hero .album[data-collage="2"] .album-cover{left:2%;top:0;transform:rotate(6deg)}
-.hero .album[data-collage="2"] .album-child{right:1%;top:90px;transform:rotate(-6deg);z-index:3}
-@media(hover:hover) and (pointer:fine){.hero .album figure:hover{transform:rotate(0deg) translateY(-5px);z-index:4}}
-@media(max-width:850px){.hero .album{height:350px}.hero .album figure>a{height:230px}.hero .album .album-child{top:75px}}
-@media(max-width:700px){.hero .album{width:100%;max-width:440px;height:390px;margin:0 auto}.hero .album figure>a{height:270px}}
-@media(max-width:380px){.hero .album{height:330px}.hero .album figure{padding:7px}.hero .album figure>a{height:210px}}
+/* Four complete archival images form a changing, layered composition. */
+.hero .album{position:relative;display:block;height:490px;max-width:550px;isolation:isolate}
+.hero .album::before{content:"";position:absolute;inset:45px 10px 25px 20px;background:#f0edf4;border-radius:48% 52% 44% 56%;z-index:-1}
+.hero .album figure{position:absolute;margin:0;background:white;padding:7px;border-radius:9px;box-shadow:0 12px 30px rgb(53 80 112 / .15);transition:transform .25s ease}
+.hero .album .album-cover{width:34%;left:4%;top:0;transform:rotate(-8deg);z-index:3}
+.hero .album .album-child{width:62%;right:2%;top:40px;transform:rotate(6deg);z-index:1}
+.hero .album .album-detail{width:26%;right:4%;top:220px;transform:rotate(9deg);z-index:4}
+.hero .album .album-note{width:58%;left:4%;top:240px;transform:rotate(-5deg);z-index:2}
+.hero .album figure img{display:block;width:100%;height:auto;object-fit:contain;border-radius:3px}
+.hero .album[data-collage="1"] .album-cover{left:60%;top:0;transform:rotate(8deg)}
+.hero .album[data-collage="1"] .album-child{right:32%;top:45px;transform:rotate(-6deg)}
+.hero .album[data-collage="1"] .album-detail{right:66%;top:235px;transform:rotate(-9deg)}
+.hero .album[data-collage="1"] .album-note{left:36%;top:235px;transform:rotate(5deg)}
+.hero .album[data-collage="2"] .album-cover{left:0;top:35px;transform:rotate(-5deg)}
+.hero .album[data-collage="2"] .album-child{right:0;top:0;transform:rotate(8deg)}
+.hero .album[data-collage="2"] .album-detail{right:0;top:240px;transform:rotate(5deg)}
+.hero .album[data-collage="2"] .album-note{left:0;top:220px;transform:rotate(-8deg)}
+@media(hover:hover) and (pointer:fine){.hero .album figure:hover{transform:rotate(0deg) translateY(-5px);z-index:5}}
+@media(max-width:850px){.hero .album{height:390px}.hero .album .album-detail{top:185px}.hero .album .album-note{top:190px}.hero .album[data-collage="1"] .album-detail,.hero .album[data-collage="1"] .album-note{top:190px}.hero .album[data-collage="2"] .album-detail{top:200px}.hero .album[data-collage="2"] .album-note{top:175px}}
+@media(max-width:700px){.hero .album{width:100%;max-width:440px;height:420px;margin:0 auto}}
+@media(max-width:380px){.hero .album{height:350px}.hero .album figure{padding:5px}.hero .album .album-detail,.hero .album[data-collage="1"] .album-detail{top:165px}.hero .album .album-note,.hero .album[data-collage="1"] .album-note{top:170px}.hero .album[data-collage="2"] .album-detail{top:175px}.hero .album[data-collage="2"] .album-note{top:150px}}
 @media(prefers-reduced-motion:reduce){.hero .album figure{transition:none}}
