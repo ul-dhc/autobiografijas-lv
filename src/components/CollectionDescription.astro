@@ -1,0 +1,16 @@
+---
+import { expandedDescription, type ArchiveCollection } from '../data/catalogue';
+import type { Lang } from '../data/urls';
+interface Props { collection: ArchiveCollection; lang: Lang; }
+const { collection, lang } = Astro.props;
+const description = expandedDescription(collection, lang);
+// Render only text and explicit HTTPS links; descriptions cannot inject HTML.
+const parts = (text: string) => text.split(/(\[[^\]]+\]\(https:\/\/[^\s)]+\))/g).map(part => {
+  const link = part.match(/^\[([^\]]+)\]\((https:\/\/[^\s)]+)\)$/);
+  return link ? { text: link[1], href: link[2] } : { text: part, href: null };
+});
+---
+{description.text && <div class="collection-detail-description" lang={description.lang}>
+  {lang === 'en' && description.lang === 'lv' && <p class="collection-description-language">Apraksts latviešu valodā · Description in Latvian</p>}
+  {description.text.split(/\n\s*\n/).map(paragraph => <p>{parts(paragraph).map(part => part.href ? <a href={part.href} target="_blank" rel="noopener noreferrer">{part.text}</a> : part.text)}</p>)}
+</div>}

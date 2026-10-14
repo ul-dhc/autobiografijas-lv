@@ -15,7 +15,7 @@ npm run dev -- --host 127.0.0.1 --port 8765
 
 Latvian: http://127.0.0.1:8765/ · English: http://127.0.0.1:8765/en/
 
-Collection catalogue: `/kolekcijas/` and `/en/collections/`. Each collection has a static detail page using its Garamantas ID and a readable title slug, for example `/kolekcijas/1119253/Adama-Purmala-dzivesstasts/`. Title slugs are localized and have Latvian diacritics removed. Search covers both language versions, descriptions, verified names and archive numbers, including queries without Latvian diacritics. Filters, sorting and view choices stay in the URL when opening a detail page or switching languages. Without JavaScript, all collections and detail pages remain available.
+Collection catalogue: `/kolekcijas/` and `/en/collections/`. Collections expand horizontally in the catalogue and are shared through readable hash anchors, for example `/kolekcijas/#LFKAk1-Adama-Purmala-dzivesstasts`. No separate collection pages are generated. Search covers both languages, descriptions, verified names and archive numbers, including queries without Latvian diacritics. Filters, sorting and view choices stay in the URL when switching languages. Without JavaScript, all collections can still be expanded in the catalogue.
 
 ```sh
 npm run check
@@ -59,3 +59,7 @@ The local `concept/` design exploration, original edits and previews are intenti
 The catalogue uses the explicit public field list in `src/data/collections.json`. Internal workbook notes, contact details, processing and access statuses, and authenticated person-tab identities not corroborated by the index text are excluded. Submitter names require agreement between the workbook and Garamantas. Missing descriptions and uncertain matches stay empty. Current Garamantas descriptions take precedence over older workbook dates where a conflict was reviewed. Cover images embed the first publicly available manuscript page from Garamantas, verified without signing in and recorded in `src/data/manuscript-images.json`. Gallery photographs are not used. Collections without an available manuscript image, or whose image fails to load, show a neutral archive-number fallback. The catalogue does not imply that every source collection has an image.
 
 Local collection source snapshots and import reports are in `docs/collections/`. `scripts/read-collection-workbook.py` reads only selected workbook fields, and `scripts/prepare-collections.mjs` generates the public catalogue from the local snapshots. The production build reads the resulting JSON and does not need the workbook or those source snapshots.
+
+Collection share links use catalogue anchors such as `kolekcijas/#LFKAk1-Adama-Purmala-dzivesstasts` (the same anchor in the English catalogue). The chain icon copies a clean URL without search filters. Opening an anchor reveals and expands its card, including collections beyond the first results; conflicting filters are cleared. Outside clicks and Escape collapse the card and remove its anchor.
+
+The Lucide pin button keeps selected collections first (most recently pinned first) within the current search/filter results. Pins are stored by collection ID in this browser and shared across both language views. Pin/unpin reordering uses a short FLIP animation and respects reduced-motion preferences. Unpinning restores the selected sort order.

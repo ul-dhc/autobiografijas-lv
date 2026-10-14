@@ -20,9 +20,9 @@ const corpusLinks = ['https://korpuss.lv/en/id/PanDi', 'https://nosketch.korpuss
     <h3>{titles[i]}</h3><p>{descriptions[i]}</p>
     <div class="dataset-reference">
       <p class="reference-label">{en ? 'Bibliographic reference' : 'Bibliogrāfiskais ieraksts'}</p>
-      <p id={`dataset-cite-${i}`} class="citation-text">{ref.authors} ({ref.year}). <em>{ref.title}</em> [{en ? 'Data set' : 'Datukopa'}]. {ref.publisher}. <a href={ref.handle}>{ref.handle}</a></p>
+      <p id={`dataset-cite-${i}`} class="citation-text">{ref.authors} ({ref.year}). <em>{ref.title}</em> [{en ? 'Data set' : 'Datukopa'}]. {ref.publisher}. <a href={ref.handle} target="_blank" rel="noopener noreferrer">{ref.handle}</a></p>
       <button class="copy-reference" type="button" data-copy-target={`dataset-cite-${i}`}>{en ? 'Copy reference' : 'Kopēt atsauci'}</button><span class="copy-status" role="status"></span>
     </div>
-    <div class="dataset-links"><a class="read-link" href={ref.source}>CLARIN {en ? 'record' : 'ieraksts'}</a><a class="read-link" href={corpusLinks[i]}>{en ? 'Explore the corpus' : 'Meklēt korpusā'}</a></div>
+    <div class="dataset-links"><a class="read-link" href={ref.source} target="_blank" rel="noopener noreferrer">CLARIN {en ? 'record' : 'ieraksts'}</a><a class="read-link" href={corpusLinks[i]} target="_blank" rel="noopener noreferrer">{en ? 'Explore the corpus' : 'Meklēt korpusā'}</a></div>
   </article>)}
 </div>

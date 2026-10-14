@@ -40,10 +40,10 @@ const en = lang === "en";
       </p>
     </div>
     <div class={"footer-links"}>
-      <a href={"https://www.facebook.com/autobiografijas.lv"}>
+      <a href={"https://www.facebook.com/autobiografijas.lv"} target="_blank" rel="noopener noreferrer">
         {"Facebook"}
       </a>
-      <a href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums"}>
+      <a href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums"} target="_blank" rel="noopener noreferrer">
         {"garamantas.lv"}
       </a>
     </div>
@@ -51,7 +51,7 @@ const en = lang === "en";
   <div class={"shell footer-bottom"}>
     <span>
       {"© "}
-      <a href="http://dhc.lu.lv/">{en ? 'University of Latvia Digital Humanities Centre' : 'LU Digitālo humanitāro zinātņu centrs'}</a>, 2026
+      <a href={en ? "https://dhc.lu.lv/#en" : "https://dhc.lu.lv"} target="_blank" rel="noopener noreferrer">{en ? 'University of Latvia Digital Humanities Centre' : 'LU Digitālo humanitāro zinātņu centrs'}</a>, 2026
     </span>
 
 

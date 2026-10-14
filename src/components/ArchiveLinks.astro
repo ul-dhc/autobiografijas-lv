@@ -14,7 +14,7 @@ const links = [
   <h2 id="archive-heading">{en ? 'Explore the collections on garamantas.lv' : 'Iepazīsti kolekcijas garamantas.lv'}</h2>
   <p class="archive-entry-intro">{en ? 'Explore the original materials and their stories in the digital archive.' : 'Atver digitālo arhīvu un iepazīsti oriģinālos materiālus un to stāstus.'}</p>
   <nav class="archive-entry-links" aria-label={en ? 'Explore the digital archive' : 'Ieeja digitālajā arhīvā'}>
-    {links.map(link => <a class="archive-entry-card" href={`https://garamantas.lv/${lang}/${link.path}`}>
+    {links.map(link => <a class="archive-entry-card" href={`https://garamantas.lv/${lang}/${link.path}`} target="_blank" rel="noopener noreferrer">
       <h3>{link.title}</h3><p>{link.description}</p><span class="archive-entry-action"><span>garamantas.lv</span><ArrowUpRight /></span>
     </a>)}
   </nav>

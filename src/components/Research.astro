@@ -36,8 +36,8 @@ const en = lang === "en";
       </span>
     </summary>
     <div class="publication-list">
-  {publications.publications.map(pub => <article class="publication"><p class="publication-year">{pub.year}</p><div><h3><a href={pub.url}>{pub.title}</a></h3><p>{pub.authors}.</p><p>{pub.venue} {pub.note?.[lang]}</p></div></article>)}
-  <a class="read-link" href={en ? 'https://www.sanitareinsone.lv/en/publications' : 'https://www.sanitareinsone.lv/lv/publik%C4%81cijas'}>{en ? 'Sanita Reinsone’s full publication list' : 'Pilns Sanitas Reinsones publikāciju saraksts'}</a>
+  {publications.publications.map(pub => <article class="publication"><p class="publication-year">{pub.year}</p><div><h3><a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a></h3><p>{pub.authors}.</p><p>{pub.venue} {pub.note?.[lang]}</p></div></article>)}
+  <a class="read-link" href={en ? 'https://www.sanitareinsone.lv/en/publications' : 'https://www.sanitareinsone.lv/lv/publik%C4%81cijas'} target="_blank" rel="noopener noreferrer">{en ? 'Sanita Reinsone’s full publication list' : 'Pilns Sanitas Reinsones publikāciju saraksts'}</a>
 </div>
   </details>
   <details class={"research-details"}>

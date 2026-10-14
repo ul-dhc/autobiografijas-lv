@@ -1,0 +1,31 @@
+---
+import LucideIcon from './LucideIcon.astro';
+import type { Lang } from '../data/urls';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const label = lang === 'en' ? 'Back to top' : 'Uz lapas augšpusi';
+---
+<button class="back-to-top" type="button" data-back-to-top aria-label={label} title={label} hidden><LucideIcon name="arrow-up" /></button>
+<style>
+  .back-to-top{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:30;display:grid;place-items:center;width:46px;height:46px;border:1px solid #d7cdd9;border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 3px 16px #6d597a20;cursor:pointer;transition:background .18s ease,color .18s ease,transform .18s ease}
+  .back-to-top[hidden]{display:none}
+  .back-to-top:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+  .back-to-top:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  .back-to-top :global(svg){width:21px;height:21px}
+  @media(max-width:650px){.back-to-top{right:16px;bottom:max(16px,env(safe-area-inset-bottom));width:44px;height:44px}}
+  @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.back-to-top:hover{transform:none}}
+</style>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-back-to-top]');
+  if (button) {
+    const update = () => { button.hidden = window.scrollY < Math.max(450, window.innerHeight * .75); };
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    addEventListener('pageshow', update);
+    update();
+    button.addEventListener('click', () => {
+      document.querySelector<HTMLAnchorElement>('.skip')?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    });
+  }
+</script>

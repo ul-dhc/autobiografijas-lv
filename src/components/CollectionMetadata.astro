@@ -1,0 +1,17 @@
+---
+import { materialLabels, periodLabel, type ArchiveCollection } from '../data/catalogue';
+import type { Lang } from '../data/urls';
+interface Props { collection: ArchiveCollection; lang: Lang; }
+const { collection, lang } = Astro.props;
+const en = lang === 'en';
+const languageNames: Record<string, Record<Lang, string>> = { lv: { lv: 'Latviešu', en: 'Latvian' }, ru: { lv: 'Krievu', en: 'Russian' } };
+const fields = [
+  { label: en ? 'Collection number' : 'Kolekcijas numurs', value: collection.reference },
+  { label: en ? 'Author' : 'Autors', value: collection.authors.join(', ') },
+  { label: en ? 'Writing period' : 'Rakstīšanas laikposms', value: periodLabel(collection, lang) },
+  { label: en ? 'Material type' : 'Materiāla veids', value: collection.materialTypes.map(type => materialLabels[type]?.[lang]).filter(Boolean).join(', ') },
+  { label: en ? 'Language' : 'Valoda', value: collection.languages.map(code => languageNames[code]?.[lang] ?? code).join(', ') },
+  { label: en ? 'Submitted by' : 'Iesniedzējs', value: collection.submitters.join(', ') },
+].filter(field => field.value);
+---
+<dl class="collection-detail-metadata">{fields.map(field => <div><dt>{field.label}</dt><dd>{field.value}</dd></div>)}</dl>

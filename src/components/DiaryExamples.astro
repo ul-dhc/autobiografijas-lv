@@ -8,9 +8,9 @@ const en = lang === 'en';
 ---
 <div class="pudelis-examples">
   {entries.map((entry, i) => <figure id={`pudelis-example-${i}`} class="pudelis-slide" hidden={i !== 0}>
-    <a href="https://www.facebook.com/pudelisraksta/"><AssetImage file={entry.file} alt={`Emīls Pudelis · ${entry.year}. ${entry.transcript}`} /></a>
+    <a href="https://www.facebook.com/pudelisraksta/" target="_blank" rel="noopener noreferrer"><AssetImage file={entry.file} alt={`Emīls Pudelis · ${entry.year}. ${entry.transcript}`} /></a>
     <figcaption>
-      <span>@pudelisraksta · <a href="https://www.facebook.com/pudelisraksta/">{en ? 'Read on Facebook' : 'Lasīt Facebook'}</a></span>
+      <span>@pudelisraksta · <a href="https://www.facebook.com/pudelisraksta/" target="_blank" rel="noopener noreferrer">{en ? 'Read on Facebook' : 'Lasīt Facebook'}</a></span>
     </figcaption>
   </figure>)}
   <div class="pudelis-controls" hidden>

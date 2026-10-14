@@ -26,5 +26,21 @@
   "arrow-up-right": {
     "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-up-right.svg",
     "body": "<path d=\"M7 7h10v10\" /><path d=\"M7 17 17 7\" />"
+  },
+  "link": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/link.svg",
+    "body": "<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\" /><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\" />"
+  },
+  "check": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/check.svg",
+    "body": "<path d=\"M20 6 9 17l-5-5\" />"
+  },
+  "pin": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/pin.svg",
+    "body": "<path d=\"M12 17v5\" /><path d=\"M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z\" />"
+  },
+  "arrow-up": {
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/arrow-up.svg",
+    "body": "<path d=\"m5 12 7-7 7 7\" /><path d=\"M12 19V5\" />"
   }
 }

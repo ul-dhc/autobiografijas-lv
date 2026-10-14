@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CatalogueImage from './CatalogueImage.astro';
+import CollectionMetadata from './CollectionMetadata.astro';
+import CollectionDescription from './CollectionDescription.astro';
 import LucideIcon from './LucideIcon.astro';
-import { catalogue, cataloguePath, collectionUrl, localizedText, materialLabels, periodLabel, searchText } from '../data/catalogue';
+import { catalogue, collectionAnchor, cataloguePath, localizedText, materialLabels, periodLabel, searchText } from '../data/catalogue';
 import { localUrl, type Lang } from '../data/urls';
 import '../styles/catalogue.css';
 interface Props { lang: Lang; }
@@ -21,19 +23,27 @@ const en = lang === 'en';
       <div><label for="catalogue-sort">{en ? 'Sort by' : 'Kārtot pēc'}</label><select id="catalogue-sort" name="sort"><option value="number">{en ? 'Collection number' : 'Kolekcijas numura'}</option><option value="title">{en ? 'Title: A–Z' : 'Nosaukuma: A–Z'}</option><option value="year">{en ? 'Writing period' : 'Rakstīšanas laika'}</option></select></div>
     </form>
     <div class="catalogue-results-bar"><p data-catalogue-count role="status" aria-live="polite">{en ? `${catalogue.length} collections` : `${catalogue.length} kolekcija`}</p><div class="catalogue-result-actions" data-catalogue-actions hidden><button type="button" class="catalogue-reset" data-catalogue-reset hidden>{en ? 'Clear filters' : 'Notīrīt filtrus'}</button><div class="catalogue-view" role="group" aria-label={en ? 'View' : 'Skats'}><button type="button" data-catalogue-view="grid" aria-pressed="true" aria-label={en ? 'Card view' : 'Kartīšu skats'} title={en ? 'Card view' : 'Kartīšu skats'}><LucideIcon name="layout-grid" /></button><button type="button" data-catalogue-view="list" aria-pressed="false" aria-label={en ? 'List view' : 'Saraksta skats'} title={en ? 'List view' : 'Saraksta skats'}><LucideIcon name="list" /></button></div></div></div>
+    <p class="catalogue-copy-status catalogue-sr" data-copy-status role="status" aria-live="polite"></p>
+    <div data-copy-fallback hidden><label for="collection-share-url">{en ? 'Copy this link:' : 'Nokopē šo saiti:'}</label><input id="collection-share-url" type="text" readonly /></div>
     <noscript><p>{en ? 'All collections are listed below. Enable JavaScript to use the search and filters.' : 'Zemāk ir visas kolekcijas. Meklēšanai un filtriem nepieciešams JavaScript.'}</p></noscript>
     <div class="catalogue-grid" data-catalogue-grid data-view="grid">
       {catalogue.map(collection => {
         const title = localizedText(collection.title, lang);
         const description = localizedText(collection.shortDescription, lang);
         const people = collection.authors.length ? collection.authors : collection.submitters;
-        return <article class="catalogue-card" data-catalogue-card data-search={searchText(collection)} data-types={collection.materialTypes.join(',')} data-number={collection.number} data-title={title.text} data-year={collection.writingPeriod.start ?? ''}>
-          <a class="catalogue-card-image" href={collectionUrl(collection.id, lang)} data-collection-link aria-label={title.text}><CatalogueImage collection={collection} lang={lang} /></a>
-          <div class="catalogue-card-copy"><div class="catalogue-card-meta"><span>{collection.reference}</span>{periodLabel(collection, lang) && <span>{periodLabel(collection, lang)}</span>}</div><h2><a href={collectionUrl(collection.id, lang)} data-collection-link lang={title.lang}>{title.text}</a></h2>
+        return <article class="catalogue-card" id={collectionAnchor(collection)} data-catalogue-card data-collection-id={collection.id} data-search={searchText(collection)} data-types={collection.materialTypes.join(',')} data-number={collection.number} data-title={title.text} data-year={collection.writingPeriod.start ?? ''}>
+          <details class="catalogue-disclosure"><summary class="catalogue-card-summary" aria-labelledby={`collection-title-${collection.id}`}><div class="catalogue-card-image"><CatalogueImage collection={collection} lang={lang} /></div>
+          <div class="catalogue-card-copy"><div class="catalogue-card-meta"><span>{collection.reference}</span>{periodLabel(collection, lang) && <span>{periodLabel(collection, lang)}</span>}</div><div class="catalogue-card-title"><h2 id={`collection-title-${collection.id}`} lang={title.lang}>{title.text}</h2><span class="catalogue-card-tools"><button class="catalogue-pin" type="button" data-pin-collection aria-pressed="false" aria-label={en ? `Pin collection: ${title.text}` : `Piespraust kolekciju: ${title.text}`} title={en ? 'Pin to top' : 'Piespraust sākumā'} hidden><LucideIcon name="pin" /></button><a class="catalogue-copy-link" data-copy-collection href={`${localUrl(cataloguePath(lang))}#${collectionAnchor(collection)}`} aria-label={en ? `Copy link: ${title.text}` : `Kopēt saiti: ${title.text}`} title={en ? 'Copy collection link' : 'Kopēt kolekcijas saiti'}><span class="catalogue-copy-chain"><LucideIcon name="link" /></span><span class="catalogue-copy-check"><LucideIcon name="check" /></span></a></span></div>
             {description.text && <p class="catalogue-card-description" lang={description.lang}>{description.text}</p>}
             {people.length > 0 && <p class="catalogue-card-people"><span>{collection.authors.length ? (en ? 'Author: ' : 'Autors: ') : (en ? 'Submitted by: ' : 'Iesniedzējs: ')}</span>{people.join(', ')}</p>}
-            <a class="catalogue-card-more" href={collectionUrl(collection.id, lang)} data-collection-link>{en ? 'Explore collection' : 'Iepazīt kolekciju'} <LucideIcon name="chevron-right" /></a>
-          </div>
+            <span class="catalogue-card-more"><span class="catalogue-expand-label">{en ? 'Explore collection' : 'Iepazīt kolekciju'}</span><span class="catalogue-collapse-label">{en ? 'Close details' : 'Sakļaut informāciju'}</span><LucideIcon name="chevron-right" /></span>
+          </div></summary>
+          <div class="catalogue-expanded">
+<CollectionDescription collection={collection} lang={lang} />
+            <CollectionMetadata collection={collection} lang={lang} />
+            <a class="collection-source-button" href={collection.garamantasUrl[lang]} target="_blank" rel="noopener noreferrer">{en ? 'Open on garamantas.lv' : 'Atvērt garamantas.lv'} <LucideIcon name="arrow-up-right" /><span class="catalogue-sr">{en ? ' (opens in a new tab)' : ' (atveras jaunā cilnē)'}</span></a>
+            {collection.id === '1415829' && <p class="collection-pandemic-note">{en ? 'You can contribute your pandemic diary to this collection.' : 'Šo kolekciju vari papildināt ar savu pandēmijas dienasgrāmatu.'} <a href="mailto:garamantas@lulfmi.lv">{en ? 'Contact the archive' : 'Sazināties ar krātuvi'} <LucideIcon name="arrow-up-right" /></a></p>}
+          </div></details>
         </article>;
       })}
     </div>
