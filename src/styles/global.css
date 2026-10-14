@@ -116,3 +116,6 @@ html[data-text-size="large"] .collection-grid{grid-template-columns:repeat(3,min
 .curator-card{display:flex;flex-direction:column;gap:16px;background:transparent;overflow:visible}
 .curator-card>img,.curator-card>.portrait-placeholder{border-radius:22px}
 .curator-copy{background:white;border-radius:22px;flex:1}
+
+.masthead nav{margin-left:0}.masthead .header-tools{margin-left:auto}
+@media(max-width:850px){.masthead nav{order:0}.masthead .header-tools{order:1}}

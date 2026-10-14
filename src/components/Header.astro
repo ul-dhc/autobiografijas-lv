@@ -6,9 +6,6 @@ const { lang } = Astro.props;
 const en = lang === "en";
 ---
 <header class={"shell masthead"}>
-  <a class={"brand"} href={localUrl(en ? "en/" : "")}>
-    {en ? "ALF Autobiography Collection" : "Latviešu folkloras krātuves Autobiogrāfiju krājums"}
-  </a>
   <nav aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
     <a href={"#archive"}>
       {en ? "Collections" : "Kolekcijas"}
