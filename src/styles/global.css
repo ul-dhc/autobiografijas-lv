@@ -175,3 +175,4 @@ html[data-text-size="large"] .collection-grid{grid-template-columns:repeat(3,min
   .masthead[data-menu-open=true] nav a{display:flex;align-items:center;min-height:44px;padding:10px 14px;font-size:1rem;border-radius:10px}
 }
 @media(max-width:850px){.masthead[data-menu-open=true] nav a{justify-content:flex-start;text-align:left}}
+@media(max-width:650px){.stat-label{font-size:.8125rem;line-height:1.4}.stats .stat{padding-left:8px;padding-right:8px}}
