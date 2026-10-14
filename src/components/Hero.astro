@@ -23,28 +23,21 @@ const en = lang === "en";
       </a>
     </div>
   </div>
-  <div class={"album"}>
+  <div class="album" data-collage="0">
     <figure class={"album-cover"}>
       <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
         <AssetImage file={"elma-portrait.jpg"} alt={en ? "Photograph from the Elma Marija Vanags collection" : "Fotogrāfija no Elmas Marijas Vanags kolekcijas"} class="" loading="eager" />
       </a>
-      <figcaption>
-        {en ? "Photograph from the Elma Marija Vanags collection " : "Fotogrāfija no Elmas Marijas Vanags kolekcijas "}
-        <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
-          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
-        </a>
-      </figcaption>
     </figure>
     <figure class={"album-child"}>
       <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
         <AssetImage file={"irma-cover.jpg"} alt={en ? "The cover of Irma Vīksniņa’s diary" : "Irmas Vīksniņas dienasgrāmatas vāks"} class="" loading="eager" />
       </a>
-      <figcaption>
-        {en ? "The cover of Irma Vīksniņa’s diary " : "Irmas Vīksniņas dienasgrāmatas vāks "}
-        <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
-          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
-        </a>
-      </figcaption>
     </figure>
   </div>
 </section>
+
+<script>
+  const collage = document.querySelector<HTMLElement>('[data-collage]');
+  if (collage) collage.dataset.collage = String(Math.floor(Math.random() * 3));
+</script>
