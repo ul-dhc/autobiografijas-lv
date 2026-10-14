@@ -24,7 +24,7 @@ jobs:
       - name: Build and upload Astro site
         uses: withastro/action@v6
         env:
-          SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.origin }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://dhc.lu.lv' }}
           BASE_PATH: ${{ vars.BASE_PATH || steps.pages.outputs.base_path || '/' }}
         with:
           node-version: 22

@@ -25,14 +25,14 @@ npm run verify
 To verify the GitHub project path locally:
 
 ```sh
-SITE_URL=https://ul-dhc.github.io BASE_PATH=/autobiografijas-lv/ npm run build
+SITE_URL=https://dhc.lu.lv BASE_PATH=/autobiografijas-lv/ npm run build
 BASE_PATH=/autobiografijas-lv/ npm run verify
 BASE_PATH=/autobiografijas-lv/ npm run preview
 ```
 
 ## GitHub Pages
 
-In repository Settings → Pages, select **GitHub Actions**. The workflow builds/checks pull requests and deploys pushes to `main`. `actions/configure-pages` supplies the actual origin and base path; the expected project URL is https://ul-dhc.github.io/autobiografijas-lv/.
+In repository Settings → Pages, select **GitHub Actions**. The workflow builds/checks pull requests and deploys pushes to `main`. `actions/configure-pages` supplies the repository base path. The organization Pages domain is `dhc.lu.lv`; the public project URL is https://dhc.lu.lv/autobiografijas-lv/. HTTPS is enforced in Pages settings.
 
 Optional Actions variables `SITE_URL` and `BASE_PATH` override the automatic values for a custom domain. For a custom domain, use `/` as the base and configure the domain in Pages settings. No server adapter, credentials or backend are needed.
 
