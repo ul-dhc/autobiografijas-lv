@@ -1,0 +1,34 @@
+---
+import type { Lang } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"about"} class={"shell section about"}>
+  <div class={"about-copy"}>
+    <h2>
+      {en ? "About the collection" : "Par krājumu"}
+    </h2>
+    <p>
+      {en ? "The ALF Autobiography Collection brings together personal writings about people’s lives and the times in which they lived. Diaries and memoirs are complemented by photographs, interviews and accounts from relatives." : "LFK Autobiogrāfiju krājumu veido cilvēku pašu rakstītas liecības par savu dzīvi un laiku, kurā viņi dzīvojuši. Dienasgrāmatas un atmiņas papildina fotogrāfijas, intervijas un tuvinieku stāsti."}
+    </p>
+    <p>
+      {en ? "The collection was established in 2018 to preserve and document the tradition of life writing in Latvia and encourage its continuation. It grows through collaboration with writers, their families and cultural heritage institutions." : "Krājuma veidošana aizsākta 2018. gadā. Mūsu mērķis ir saglabāt un dokumentēt dzīves pierakstīšanas tradīciju Latvijā un veicināt tās turpināšanos. Krājums top sadarbībā ar materiālu rakstītājiem, viņu ģimenēm un kultūras mantojuma institūcijām."}
+    </p>
+    <a class={"read-link"} href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums"}>
+      {en ? "More about the collection on garamantas.lv" : "Plašāk par krājumu garamantas.lv"}
+    </a>
+  </div>
+  <figure>
+    <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+      <AssetImage file={"elma-family.jpg"} alt={en ? "Photograph from the Elma Marija Vanags collection" : "Fotogrāfija no Elmas Marijas Vanags kolekcijas"} class="" loading="lazy" />
+    </a>
+    <figcaption>
+      {en ? "Photograph from the Elma Marija Vanags collection " : "Fotogrāfija no Elmas Marijas Vanags kolekcijas "}
+      <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+        {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+      </a>
+    </figcaption>
+  </figure>
+</section>

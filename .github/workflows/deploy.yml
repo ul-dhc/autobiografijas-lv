@@ -1,0 +1,50 @@
+name: Deploy Autobiogrāfiju krājums
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v5
+        id: pages
+        if: github.event_name != 'pull_request'
+      - name: Build and upload Astro site
+        uses: withastro/action@v6
+        env:
+          SITE_URL: ${{ vars.SITE_URL || steps.pages.outputs.origin }}
+          BASE_PATH: ${{ vars.BASE_PATH || steps.pages.outputs.base_path || '/' }}
+        with:
+          node-version: 22
+          package-manager: npm
+      - name: Check source and generated links
+        env:
+          BASE_PATH: ${{ vars.BASE_PATH || steps.pages.outputs.base_path || '/' }}
+        run: npm run check && npm test && npm run verify
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        uses: actions/deploy-pages@v5
+        id: deployment

@@ -1,0 +1,28 @@
+---
+import references from '../data/dataset-references.json';
+import type { Lang } from '../data/urls';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const descriptions = en ? [
+  'The CLARIN dataset contains 238 author text files in Latvian with entry dates, covering 2020–2021. The searchable version on Korpuss.lv covers 2020–2022.',
+  '74 Latvian autobiographies, life stories and memoirs written between 1900 and 2024. Metadata are available in CLARIN; the texts can be explored in NoSketch Engine.'
+] : [
+  'CLARIN datukopa aptver 2020.–2021. gadu: 238 autoru teksta faili latviešu valodā ar ierakstu datumiem. Korpuss.lv meklēšanas versija aptver 2020.–2022. gadu.',
+  '74 autobiogrāfiju, dzīvesstāstu un atmiņu teksti latviešu valodā, rakstīti 1900.–2024. gadā. CLARIN ierakstā pieejami metadati; tekstus iespējams analizēt NoSketch Engine.'
+];
+const titles = en ? ['PanDi · Corpus of Latvian Pandemic Diaries','Corpus of Latvian Autobiographies'] : ['PanDi · Pandēmijas dienasgrāmatu korpuss','Latviešu autobiogrāfiju korpuss'];
+const corpusLinks = ['https://korpuss.lv/en/id/PanDi', 'https://nosketch.korpuss.lv/#dashboard?corpname=autobio'];
+---
+<div class="dataset-grid">
+  {references.map((ref,i) => <article>
+    <p class="date">{ref.year} · {i === 0 ? 'CC BY-SA 4.0' : 'CC BY 4.0'}</p>
+    <h3>{titles[i]}</h3><p>{descriptions[i]}</p>
+    <div class="dataset-reference">
+      <p class="reference-label">{en ? 'Bibliographic reference' : 'Bibliogrāfiskais ieraksts'}</p>
+      <p id={`dataset-cite-${i}`} class="citation-text">{ref.authors} ({ref.year}). <em>{ref.title}</em> [{en ? 'Data set' : 'Datukopa'}]. {ref.publisher}. <a href={ref.handle}>{ref.handle}</a></p>
+      <button class="copy-reference" type="button" data-copy-target={`dataset-cite-${i}`}>{en ? 'Copy reference' : 'Kopēt atsauci'}</button><span class="copy-status" role="status"></span>
+    </div>
+    <div class="dataset-links"><a class="read-link" href={ref.source}>CLARIN {en ? 'record' : 'ieraksts'}</a><a class="read-link" href={corpusLinks[i]}>{en ? 'Explore the corpus' : 'Meklēt korpusā'}</a></div>
+  </article>)}
+</div>

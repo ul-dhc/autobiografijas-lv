@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+concept/preview*.png
+
+# Local design exploration and original edit files are retained outside production.
+concept/
+
+# QA screenshots remain local.
+docs/localhost-*.png

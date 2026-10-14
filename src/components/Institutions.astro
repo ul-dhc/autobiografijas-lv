@@ -1,0 +1,19 @@
+---
+import type { Lang } from "../data/urls";
+import { localUrl } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"institutions"} class={"shell institution-logos"} aria-label={en ? "Institutions and digital archive" : "Institūcijas un digitālais arhīvs"}>
+  <a href={"https://lulfmi.lv/"} aria-label={en ? "Institute of Literature, Folklore and Art, University of Latvia" : "LU Literatūras, folkloras un mākslas institūts"}>
+    <img src={localUrl(en ? "assets/lu-lfmi-logo.svg" : "assets/lu-lfmi-logo.svg")} alt={en ? "Institute of Literature, Folklore and Art, University of Latvia" : "LU Literatūras, folkloras un mākslas institūts"} width="164" height="36" />
+  </a>
+  <a href={"https://garamantas.lv/"} aria-label={en ? "garamantas.lv – digital Archives of Latvian Folklore" : "garamantas.lv – Latviešu folkloras krātuves digitālais arhīvs"}>
+    <img src={localUrl(en ? "assets/garamantas-logo.svg" : "assets/garamantas-logo.svg")} alt={en ? "garamantas.lv – digital Archives of Latvian Folklore" : "garamantas.lv – Latviešu folkloras krātuves digitālais arhīvs"} width="179" height="51" />
+  </a>
+  <a href={"https://www.hzf.lu.lv/par-mums/centri/digitalo-humanitaro-zinatnu-centrs/"} aria-label={en ? "Digital Humanities Centre, University of Latvia" : "LU Digitālo humanitāro zinātņu centrs"}>
+    <AssetImage file={en ? "dhc-logo-en.png" : "dhc-logo-lv.png"} alt={en ? "Digital Humanities Centre, University of Latvia" : "LU Digitālo humanitāro zinātņu centrs"} class="" loading="eager" />
+  </a>
+</section>

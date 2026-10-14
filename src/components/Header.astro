@@ -1,0 +1,37 @@
+---
+import type { Lang } from "../data/urls";
+import { localUrl } from "../data/urls";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<header class={"shell masthead"}>
+  <a class={"brand"} href={localUrl(en ? "en/" : "")}>
+    {en ? "ALF Autobiography Collection" : "Latviešu folkloras krātuves Autobiogrāfiju krājums"}
+  </a>
+  <nav aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
+    <a href={"#archive"}>
+      {en ? "Collections" : "Kolekcijas"}
+    </a>
+    <a href={"#research"}>
+      {en ? "Research" : "Pētniecībai"}
+    </a>
+    <a href={"#creators"}>
+      {en ? "Team" : "Veidotāji"}
+    </a>
+    <a href={"#supporters"}>
+      {en ? "Supporters" : "Atbalstītāji"}
+    </a>
+    <a href={"#contact"}>
+      {en ? "Contact" : "Kontakti"}
+    </a>
+  </nav>
+  <div class={"header-tools"}>
+    <button class={"text-size"} type={"button"} aria-label={en ? "Increase text size" : "Palielināt tekstu"} title={en ? "Increase text size" : "Palielināt tekstu"} aria-pressed={"false"}>
+      {"A+"}
+    </button>
+    <a class={"language"} href={en ? localUrl() : localUrl("en/")} lang={en ? "lv" : "en"} aria-label={en ? "Latviski" : "In English"}>
+      {en ? "LV" : "EN"}
+    </a>
+  </div>
+</header>

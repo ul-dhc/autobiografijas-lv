@@ -1,0 +1,209 @@
+{
+  "retrieved_on": "2026-10-14",
+  "usage": "local design concept; confirm attribution and reuse conditions before publication",
+  "assets": [
+    {
+      "file": "pudelis-manuscript.jpg",
+      "source_page": "https://garamantas.lv/lv/file/1391169",
+      "source_url": "https://media.garamantas.lv/images/2019/12/Ak2-Emila-Pudela-dienasgramatas-01-0003.jpg",
+      "description": "Title page from Emīls Pudelis diaries, LFK Ak 2"
+    },
+    {
+      "file": "purmalis-photo.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1119253/Adama-Purmala-dzivesstasts",
+      "source_url": "https://media.garamantas.lv/images/2018illustration/12/5c122a89a485c-web.jpg",
+      "description": "Photograph in the Ādams Purmalis collection gallery; depicted persons not independently identified"
+    },
+    {
+      "file": "sperga-cover.jpg",
+      "source_page": "https://garamantas.lv/lv/file/1361804",
+      "source_url": "https://media.garamantas.lv/images/2019/10/5d9453251da9a-web.jpg",
+      "description": "Ilzes Spergas dienasgrāmatas kolāža"
+    },
+    {
+      "file": "sperga-collage.jpg",
+      "source_page": "https://garamantas.lv/lv/file/1361806",
+      "source_url": "https://media.garamantas.lv/images/2019/10/Ak6-Ilzes-Spergas-dienasgramatas-01-0003.jpg",
+      "description": "Ilzes Spergas dienasgrāmatas lappuse"
+    },
+    {
+      "file": "sperga-notes.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1115691",
+      "source_url": "https://media.garamantas.lv/images/2019/10/5d94532f06a20-web.jpg",
+      "description": "Lappuses no Ilzes Spergas dienasgrāmatas galerijas"
+    },
+    {
+      "file": "lapins-portrait.jpg",
+      "source_page": "https://garamantas.lv/lv/illustration/1386163",
+      "source_url": "https://media.garamantas.lv/images/2019illustration/12/5df0bbab35b04-web.jpg",
+      "description": "Kārļa Lapiņa portrets 20. gadsimta 30. gados"
+    },
+    {
+      "file": "lapins-child.jpg",
+      "source_page": "https://garamantas.lv/lv/illustration/1386165",
+      "source_url": "https://media.garamantas.lv/images/2019illustration/12/Ak-154-2.jpg",
+      "description": "Kārlis Lapiņš bērnībā 20. gadsimta 20. gados"
+    },
+    {
+      "file": "lapins-scooter.jpg",
+      "source_page": "https://garamantas.lv/lv/illustration/1386167",
+      "source_url": "https://media.garamantas.lv/images/2019illustration/12/5df0bc27a1a02-web.jpg",
+      "description": "Kārlis Lapiņš bērnībā 20. gadsimta 20. gados"
+    },
+    {
+      "file": "sperga-moose.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1115691",
+      "source_url": "https://media.garamantas.lv/images/2019/10/5d94532b2c378-web.jpg",
+      "description": "Ilzes Spergas dienasgrāmatas galerijā redzamā kolāža ar alni un zīmējumiem"
+    },
+    {
+      "file": "elma-portrait.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1510251",
+      "source_url": "https://media.garamantas.lv/images/2021illustration/01/5ff848e67512b-web.jpg",
+      "description": "Fotogrāfija no Elmas Marijas Vanags kolekcijas"
+    },
+    {
+      "file": "elma-family.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1510251",
+      "source_url": "https://media.garamantas.lv/images/2021illustration/01/5ff849639a12c-web.jpg",
+      "description": "Fotogrāfija no Elmas Marijas Vanags kolekcijas"
+    },
+    {
+      "file": "scouts-cover.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1311692",
+      "source_url": "https://media.garamantas.lv/images/2019/06/5cf6480282a18-web.jpg",
+      "description": "Kapteiņa P. Zolta skautu saimes dienasgrāmatas vāks"
+    },
+    {
+      "file": "scouts-stamps.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1311692",
+      "source_url": "https://media.garamantas.lv/images/2019/06/5cf64806310f4-web.jpg",
+      "description": "Skautu dienasgrāmatas atvērums ar pastmarkām"
+    },
+    {
+      "file": "irma-cover.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1117599",
+      "source_url": "https://media.garamantas.lv/images/2018/12/5c1754e360fd0-web.jpg",
+      "description": "Irmas Vīksniņas dienasgrāmatas vāks"
+    },
+    {
+      "file": "irma-drawings.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1117599",
+      "source_url": "https://media.garamantas.lv/images/2018/12/5c1754e76e300-web.jpg",
+      "description": "Irmas Vīksniņas dienasgrāmatas atvērums ar zīmējumiem"
+    },
+    {
+      "file": "irma-writing.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1117599",
+      "source_url": "https://media.garamantas.lv/images/2018/12/5c1754eb4ea9d-web.jpg",
+      "description": "Irmas Vīksniņas dienasgrāmatas atvērums"
+    },
+    {
+      "file": "elma-young.jpg",
+      "source_page": "https://garamantas.lv/lv/collection/1510251",
+      "source_url": "https://media.garamantas.lv/images/2021illustration/01/5ff84984d728c-web.jpg",
+      "description": "Fotogrāfija no Elmas Marijas Vanags kolekcijas"
+    },
+    {
+      "file": "anna-pandemic-1.jpg",
+      "source_page": "https://garamantas.lv/lv/unit/1418345/LFK-Ak-166-77#files",
+      "source_url": "https://media.garamantas.lv/images/2025/05/AK-166-77-1.jpg",
+      "description": "Anna Meiere Logina, pandēmijas dienasgrāmata, atvērums 1, 2020"
+    },
+    {
+      "file": "anna-pandemic-4.jpg",
+      "source_page": "https://garamantas.lv/lv/unit/1418345/LFK-Ak-166-77#files",
+      "source_url": "https://media.garamantas.lv/images/2025/05/AK-166-77-4.jpg",
+      "description": "Anna Meiere Logina, pandēmijas dienasgrāmata, atvērums 4, 2020"
+    },
+    {
+      "file": "anna-pandemic-5.jpg",
+      "source_page": "https://garamantas.lv/lv/unit/1418345/LFK-Ak-166-77#files",
+      "source_url": "https://media.garamantas.lv/images/2025/05/AK-166-77-5.jpg",
+      "description": "Anna Meiere Logina, pandēmijas dienasgrāmata, atvērums 5, 2020"
+    },
+    {
+      "file": "pudelis-facebook.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "User-supplied Emīls Pudelis social media graphic: Svētdien, 26. septembrī. Nekas sevišķs. #LV1926",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-august.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Svētdien, 1. augustā. Ganīju cūkas un ravēju zemenes. #LV1926",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-july-11.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Svētdien, 11. jūlijā. Herma aizbrauca ar Mildu uz Mazsalacu, šodien iesvētī vasaras mācības bērnus, starp citiem Lejsmežanča Pēteri. Vecie Pauguri atnāca ciemos, dzērām vistas bēres. Iztaisīju vienu grābekli.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-june-24.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Ceturtdien, 24. jūnijā. Jāņu diena. Laiks silts.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-may-23.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Svētdien, 23. maijā. Pirmos vasaras svētkos. Biju ar visu familiju uz Pauguri viesos. Izpotēju Pauguram vairākas ābelītes.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-may-10.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Pirmdien, 10. maijā. Laiž govis pirmo reizi ganos.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-april-16.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Piektdien, 16. aprīlī. Ved mājā malku un stumburus. Ļoti silta diena. Redzēju cielaviņu un stārķi.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-february-24.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Trešdien, 24. februārī. Noderēju Hermīni uz nākošo gadu. Laiks silts, drusku nāk sniegi un putina. Nodzīvoju visu dienu par māju. Herma aizgāja uz Luikas māju.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-february-19.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Piektdien, 19. februārī. Runā, ka man esot dzimšanas diena. Cep un vāra no agra rīta. Uz vakaru bija ciemā vecais Pauguris ar kundzi un Jaunā Sīmaņa mamma ar mazo Jāni.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-february-17.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Trešdien, 17. februārī. Šodien velējas visu dienu. Laiks ir silts. Attaisīju vienu kartiņu kaudzi vaļā. Gar malu nosaluši, vidū gan liekas veseli.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "pudelis-facebook-january-6.png",
+      "source_page": "https://www.facebook.com/pudelisraksta/",
+      "supplied_by": "user",
+      "description": "Trešdien, 6. janvārī. Biju kunga lomā, nodzīvoju par māju. Saviesīgās biedrības bazārs un balle par labu Līču skolai.",
+      "editing": "None; full image preserved"
+    },
+    {
+      "file": "writing-covid-19-lives-cover.png",
+      "supplied_by": "user",
+      "source_page": "https://www.routledge.com/Writing-COVID-19-Lives/Gammel-Wang/p/book/9781003735595",
+      "description": "Writing COVID-19 Lives, edited by Irene Gammel and Jason Wang, Routledge, 2026. Cover supplied by user."
+    }
+  ]
+}

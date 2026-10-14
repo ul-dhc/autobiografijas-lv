@@ -1,0 +1,35 @@
+---
+import type { Lang } from "../data/urls";
+import DiaryExamples from "./DiaryExamples.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"pudelis"} class={"shell social-feature"}>
+  <DiaryExamples lang={lang} />
+  <div>
+    <p class={"social-kicker"}>
+      {en ? "A diary on social media" : "Dienasgrāmata sociālajos tīklos"}
+    </p>
+    <h2>
+      {en ? "Emīls Pudelis writes" : "Emīls Pudelis raksta"}
+    </h2>
+    <p class={"social-lead"}>
+      {en ? "One diary. A hundred-year time shift." : "Viena dienasgrāmata. Simt gadu laika nobīde."}
+    </p>
+    <p>
+      {en ? "Farmer Emīls Pudelis’s diary unfolds on social media, entry by entry, with a hundred-year time shift. Daily work, weather and events reveal the rhythm of his life. The project began in 2018." : "Mazsalacas saimnieka Emīla Pudeļa dienasgrāmata sociālajos tīklos atklājas ierakstu pēc ieraksta – ar simt gadu laika nobīdi. Ikdienas darbi, laikapstākļi un notikumi ļauj sekot viņa dzīves ritmam. Projekts aizsākts 2018. gadā."}
+    </p>
+    <div class={"social-actions"}>
+      <a class={"primary"} href={"https://www.facebook.com/pudelisraksta/"}>
+        {en ? "Read on Facebook" : "Lasīt Facebook"}
+      </a>
+      <a class={"secondary"} href={"https://twitter.com/pudelis_raksta"}>
+        {en ? "Read on X" : "Lasīt X"}
+      </a>
+    </div>
+    <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/1119254" : "https://garamantas.lv/lv/collection/1119254"}>
+      {en ? "Original diaries on garamantas.lv" : "Dienasgrāmatas oriģināli garamantas.lv"}
+    </a>
+  </div>
+</section>

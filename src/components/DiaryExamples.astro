@@ -1,0 +1,26 @@
+---
+import AssetImage from './AssetImage.astro';
+import entries from '../data/pudelis-examples.json';
+import type { Lang } from '../data/urls';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === 'en';
+---
+<div class="pudelis-examples">
+  {entries.map((entry, i) => <figure id={`pudelis-example-${i}`} class="pudelis-slide" hidden={i !== 0}>
+    <a href="https://www.facebook.com/pudelisraksta/"><AssetImage file={entry.file} alt={`Emīls Pudelis · ${entry.year}. ${entry.transcript}`} /></a>
+    <figcaption>
+      <span>@pudelisraksta · <a href="https://www.facebook.com/pudelisraksta/">{en ? 'Read on Facebook' : 'Lasīt Facebook'}</a></span>
+    </figcaption>
+  </figure>)}
+  <div class="pudelis-controls" hidden>
+    <button type="button" class="diary-arrow" data-diary-step="-1" aria-label={en ? 'Previous diary entry' : 'Iepriekšējais dienasgrāmatas ieraksts'}>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14 6-6 6 6 6" /></svg>
+    </button>
+    <span class="diary-position" aria-hidden="true">1 / {entries.length}</span>
+    <button type="button" class="diary-arrow" data-diary-step="1" aria-label={en ? 'Next diary entry' : 'Nākamais dienasgrāmatas ieraksts'}>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6 6 6-6 6" /></svg>
+    </button>
+  </div>
+  <span class="sr-only pudelis-status" role="status"></span>
+</div>

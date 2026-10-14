@@ -1,0 +1,55 @@
+---
+import type { Lang } from "../data/urls";
+import DatasetReferences from "./DatasetReferences.astro";
+import publications from "../data/publications.json";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"research"} class={"shell section research-section"}>
+  <div class={"research-intro"}>
+    <div>
+      <h2>
+        {en ? "Using the collection for research" : "Krājums pētniecībā"}
+      </h2>
+      <p class={"research-lead"}>
+        {en ? "Life writing offers insights into everyday life, relationships, identity and personal experiences of historical events. The texts can be closely read or explored in corpora to compare language, themes and patterns of writing." : "Dzīves pieraksti ļauj pētīt ikdienu, attiecības, identitāti un vēsturisku notikumu personisko pieredzi. Tos iespējams lasīt tuvplānā vai analizēt tekstu korpusos – salīdzinot valodu, tēmas un rakstīšanas ritmu."}
+      </p>
+    </div>
+    <div>
+      <p>
+        {en ? "Garamantas.lv provides original documents and their context; the corpora contain selected machine-readable texts. Contact us for help finding materials for your research question." : "Garamantas.lv pieejami oriģināldokumenti un to konteksts; tekstu korpusos – atlasīti datorlasāmi teksti. Sazinies ar mums, lai atrastu savam pētniecības jautājumam piemērotus materiālus."}
+      </p>
+      <a class={"primary"} href={"mailto:garamantas@lulfmi.lv"}>
+        {en ? "Discuss your research with us" : "Sazināties par pētniecību"}
+      </a>
+    </div>
+  </div>
+  <p class={"research-citation"}>
+    {en ? "When using a source, include its author, title and date, LFK Ak reference and archive link. Check access and reuse conditions in the relevant collection or dataset." : "Izmantojot materiālus, norādi autoru, materiāla nosaukumu un datumu, LFK Ak šifru un saiti uz arhīva ierakstu. Piekļuves un izmantošanas nosacījumus pārbaudi attiecīgajā kolekcijā vai datukopā."}
+  </p>
+  <details class={"research-details"}>
+    <summary>
+      {en ? "Publications" : "Publikācijas"}
+      <span>
+        {"5"}
+      </span>
+    </summary>
+    <div class="publication-list">
+  {publications.publications.map(pub => <article class="publication"><p class="publication-year">{pub.year}</p><div><h3><a href={pub.url}>{pub.title}</a></h3><p>{pub.authors}.</p><p>{pub.venue} {pub.note?.[lang]}</p></div></article>)}
+  <a class="read-link" href={en ? 'https://www.sanitareinsone.lv/en/publications' : 'https://www.sanitareinsone.lv/lv/publik%C4%81cijas'}>{en ? 'Sanita Reinsone’s full publication list' : 'Pilns Sanitas Reinsones publikāciju saraksts'}</a>
+</div>
+  </details>
+  <details class={"research-details"}>
+    <summary>
+      {en ? "Datasets and text corpora" : "Datu kopas un tekstu korpusi"}
+      <span>
+        {"2"}
+      </span>
+    </summary>
+    <DatasetReferences lang={lang} />
+    <p class={"identifier-note"}>
+      {en ? "The CLARIN metadata do not list DOIs for these datasets. The references use the repository’s persistent Handle links." : "CLARIN metadatos šīm datu kopām DOI nav norādīts. Citēšanai izmantotas repozitorija pastāvīgās Handle saites."}
+    </p>
+  </details>
+</section>

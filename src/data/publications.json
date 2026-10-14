@@ -1,0 +1,51 @@
+{
+  "checked": "2026-10-14",
+  "selection_source": "https://www.sanitareinsone.lv/lv/publik%C4%81cijas",
+  "verification_sources": [
+    "https://www.tandfonline.com/doi/abs/10.1080/08989575.2025.2515647",
+    "https://lulfmi.lv/letonica/letonica-zurnali/letonica-nr-47",
+    "https://ejlw.eu/article/view/42325",
+    "https://ceur-ws.org/Vol-3232/paper32.pdf"
+  ],
+  "publications": [
+    {
+      "title": "Crowdsourced: COVID-19, Life Writing, and Collective Memory in Latvia",
+      "authors": "Sanita Reinsone, Ilze Ļaksa-Timinska, Haralds Matulis, Elvīra Žvarte",
+      "year": "2026",
+      "venue": "Writing COVID-19 Lives. Routledge.",
+      "url": "https://doi.org/10.4324/9781003735595-9"
+    },
+    {
+      "title": "Beyond the Archive Shelves: Navigating Digital Archiving of Life Writing Legacy Through Public Involvement",
+      "authors": "Sanita Reinsone, Ilze Ļaksa-Timinska, Elvīra Žvarte",
+      "year": "2026",
+      "venue": "a/b: Auto/Biography Studies, 41(1), 87–108.",
+      "note": {
+        "lv": "Pirmpublicējums tiešsaistē: 2025.",
+        "en": "First published online in 2025."
+      },
+      "url": "https://doi.org/10.1080/08989575.2025.2515647"
+    },
+    {
+      "title": "Archiving Uncertainty: Leveraging Crowdsourcing Methodology in Documenting Personal Experiences of COVID-19",
+      "authors": "Sanita Reinsone, Ilze Ļaksa-Timinska, Haralds Matulis, Elvīra Žvarte",
+      "year": "2025",
+      "venue": "European Journal of Life Writing, 14, LD1–LD34.",
+      "url": "https://doi.org/10.21827/ejlw.14.42325"
+    },
+    {
+      "title": "Automatic Detection of Dates in the Corpus of Diaries",
+      "authors": "Haralds Matulis, Sanita Reinsone, Ilze Ļaksa-Timinska",
+      "year": "2022",
+      "venue": "DHNB 2022. CEUR Workshop Proceedings, 3232, 334–342.",
+      "url": "https://ceur-ws.org/Vol-3232/paper32.pdf"
+    },
+    {
+      "title": "Metadatos balstīta dienasgrāmatu teksta korpusa analīze",
+      "authors": "Sanita Reinsone, Haralds Matulis, Ilze Ļaksa-Timinska",
+      "year": "2022",
+      "venue": "Letonica, 47, 70–87.",
+      "url": "https://doi.org/10.35539/LTNC.2022.0047.S.R.H.M.I.L.T.70.87"
+    }
+  ]
+}

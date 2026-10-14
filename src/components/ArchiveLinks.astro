@@ -1,0 +1,22 @@
+---
+import type { Lang } from '../data/urls';
+import ArrowUpRight from './ArrowUpRight.astro';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const links = [
+  { title: en ? 'Collections' : 'Kolekcijas', description: en ? 'Diaries, life stories, memoirs and letters.' : 'Dienasgrāmatas, dzīvesstāsti, atmiņas un vēstules.', path: `collection/index?CollectionSearch%5Brepository_id%5D=1115628` },
+  { title: en ? 'People' : 'Personas', description: en ? 'Meet the people whose writings form the collection.' : 'Iepazīsti cilvēkus, kuru pieraksti veido krājumu.', path: `person/index?PersonSearch%5BrepositoryId%5D=1115628` },
+  { title: en ? 'Photographs and images' : 'Fotogrāfijas un attēli', description: en ? 'Photographs, drawings and visual records of everyday life.' : 'Fotogrāfijas, zīmējumi un ikdienas vizuālās liecības.', path: `illustration/index?IllustrationSearch%5Brepository%5D=1115628` },
+];
+---
+<section id="archive" class="shell archive-entry" aria-labelledby="archive-heading">
+  <h2 id="archive-heading">{en ? 'Explore the collections on garamantas.lv' : 'Iepazīsti kolekcijas garamantas.lv'}</h2>
+  <p class="archive-entry-intro">{en ? 'Explore the original materials and their stories in the digital archive.' : 'Atver digitālo arhīvu un iepazīsti oriģinālos materiālus un to stāstus.'}</p>
+  <nav class="archive-entry-links" aria-label={en ? 'Explore the digital archive' : 'Ieeja digitālajā arhīvā'}>
+    {links.map(link => <a class="archive-entry-card" href={`https://garamantas.lv/${lang}/${link.path}`}>
+      <h3>{link.title}</h3><p>{link.description}</p><span class="archive-entry-action"><span>garamantas.lv</span><ArrowUpRight /></span>
+    </a>)}
+  </nav>
+  <p class="archive-entry-note">{en ? 'Materials are available in their original languages. Access restrictions apply to some collections.' : 'Materiāli pieejami oriģinālvalodā. Daļai kolekciju ir piekļuves ierobežojumi.'}</p>
+</section>

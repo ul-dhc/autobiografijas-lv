@@ -1,0 +1,61 @@
+---
+import type { Lang } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"creators"} class={"curators-section"}>
+  <div class={"shell curators-inner"}>
+    <div class={"curators-heading"}>
+      <h2>
+        {en ? "The collection curators" : "Krājuma veidotāji"}
+      </h2>
+      <p>
+        {en ? "The collection’s core team." : "Krājuma pamata komanda."}
+      </p>
+    </div>
+    <div class={"curator-grid"}>
+      <article class={"curator-card"}>
+        <AssetImage file={"portrait-sanita-unified.png"} alt={"Sanita Reinsone"} class="" loading="lazy" />
+        <div class={"curator-copy"}>
+          <h3>
+            {"Sanita Reinsone"}
+          </h3>
+          <p class={"curator-role"}>
+            {en ? "Associate Professor at the University of Latvia Faculty of Humanities and Head of the " : "Asociētā profesore LU Humanitāro zinātņu fakultātē, "}
+            <a href={"https://www.hzf.lu.lv/par-mums/centri/digitalo-humanitaro-zinatnu-centrs/"}>
+              {en ? "Digital Humanities Centre" : "Digitālo humanitāro zinātņu centra"}
+            </a>
+            {en ? "." : " vadītāja."}
+          </p>
+        </div>
+      </article>
+      <article class={"curator-card"}>
+        <AssetImage file={"portrait-ilze-unified.png"} alt={"Ilze Ļaksa-Timinska"} class="" loading="lazy" />
+        <div class={"curator-copy"}>
+          <h3>
+            {"Ilze Ļaksa-Timinska"}
+          </h3>
+          <p class={"curator-role"}>
+            {en ? "Researcher at the Institute of Literature, Folklore and Art, University of Latvia." : "Pētniece LU Literatūras, folkloras un mākslas institūtā."}
+          </p>
+        </div>
+      </article>
+      <article class={"curator-card"}>
+        <AssetImage file={"portrait-elvira-unified.png"} alt={"Elvīra Žvarte"} class="" loading="lazy" />
+        <div class={"curator-copy"}>
+          <h3>
+            {"Elvīra Žvarte"}
+          </h3>
+          <p class={"curator-role"}>
+            {en ? "Research Assistant at the Institute of Literature, Folklore and Art, University of Latvia, and a doctoral student at the Latvian Academy of Culture." : "Zinātniskā asistente LU Literatūras, folkloras un mākslas institūtā un doktorante Latvijas Kultūras akadēmijā."}
+          </p>
+        </div>
+      </article>
+    </div>
+    <p class={"team-history"}>
+      {en ? "Justīne Jaudzema, Una Smilgaine and others have also contributed to developing the collection." : "Krājuma veidošanā darbojušās arī Justīne Jaudzema, Una Smilgaine un citi."}
+    </p>
+  </div>
+</section>

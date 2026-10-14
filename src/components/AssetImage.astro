@@ -1,0 +1,11 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { file: string; alt: string; class?: string; loading?: 'eager' | 'lazy'; }
+const { file, alt, class: className = '', loading = 'lazy' } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/*.{jpg,jpeg,png,webp}', { eager: true });
+const source = images[`../assets/${file}`]?.default;
+if (!source) throw new Error(`Missing image: ${file}`);
+const width = Math.min(source.width, file.startsWith('portrait-') ? 600 : 1200);
+---
+<Image src={source} alt={alt} class={className} width={width} format="webp" quality={85} widths={[Math.min(480,width),width]} sizes="(max-width: 700px) 100vw, 1200px" loading={loading} />

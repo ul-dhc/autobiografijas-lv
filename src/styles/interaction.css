@@ -1,0 +1,32 @@
+/* Quiet visual feedback. Static headings retain their editorial appearance. */
+:root{--interaction-ease:cubic-bezier(.2,.7,.25,1);--interaction-shadow:0 8px 24px rgb(53 80 112 / .1)}
+.archive-entry-card,.stat,.collection figure>a,.process-photo-link,.album figure>a,.pandemic-gallery figure>a,.about figure>a,.contribution figure>a,.pudelis-slide>a{transition:box-shadow 240ms var(--interaction-ease),transform 240ms var(--interaction-ease),background-color 180ms ease}
+.album figure>a,.pandemic-gallery figure>a,.about figure>a,.contribution figure>a{display:block}
+.collection figure>a{overflow:hidden}
+.collection img,.process-gallery img,.pandemic-gallery img,.album img,.about figure img,.contribution figure img{transition:transform 420ms var(--interaction-ease)}
+.curator-card>img{transition:filter 300ms ease}
+.collection-copy h3 a,.publication h3 a,.dataset-links a,.read-link,figcaption a,.curator-role a{transition:color 180ms ease,text-decoration-color 180ms ease,text-underline-offset 180ms ease}
+.archive-entry-card h3{transition:color 180ms ease}
+.photo-details>summary,.research-details>summary,.support-list>summary{transition:background-color 180ms ease,box-shadow 180ms ease;color:var(--ink)}
+.photo-details>summary:focus-visible,.research-details>summary:focus-visible,.support-list>summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.archive-entry-card:focus-visible,.stat:focus-visible,.process-photo-link:focus-visible,.collection figure>a:focus-visible{box-shadow:var(--interaction-shadow)}
+.collection-copy h3 a:focus-visible,.publication h3 a:focus-visible,.read-link:focus-visible{color:#6d597a}
+/* Hover motion is limited to devices with a precise pointer. */
+@media(hover:hover) and (pointer:fine){
+  .archive-entry-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgb(28 20 37 / .15);background:white}
+  .archive-entry-card:hover h3{color:#574761}
+  .stat:hover{transform:translateY(-2px);box-shadow:var(--interaction-shadow)}
+  .collection figure>a:hover,.process-photo-link:hover,.pandemic-gallery figure>a:hover,.album figure>a:hover,.about figure>a:hover,.contribution figure>a:hover{box-shadow:var(--interaction-shadow)}
+  .collection figure>a:hover img{transform:scale(1.018)}
+  .process-photo-link:hover img{transform:scale(1.025)}
+  .album figure>a:hover img,.pandemic-gallery figure>a:hover img,.about figure>a:hover img,.contribution figure>a:hover img{transform:scale(1.012)}
+  /* Diary graphics contain text: lift the frame without zooming or cropping. */
+  .pudelis-slide>a:hover{box-shadow:var(--interaction-shadow)}
+  .curator-card:hover>img{filter:brightness(1.025)}
+  .collection-copy h3 a:hover,.publication h3 a:hover,.dataset-links a:hover,.read-link:hover,figcaption a:hover,.curator-role a:hover{color:#6d597a;text-underline-offset:6px}
+  .photo-details>summary:hover,.research-details>summary:hover,.support-list>summary:hover{background-color:#e9e2ee;box-shadow:inset 0 0 0 1px rgb(109 89 122 / .1)}
+}
+@media(prefers-reduced-motion:reduce){
+  .archive-entry-card,.stat,.collection figure>a,.process-photo-link,.album figure>a,.pandemic-gallery figure>a,.about figure>a,.contribution figure>a,.pudelis-slide>a,.collection img,.process-gallery img,.pandemic-gallery img,.album img,.about figure img,.contribution figure img,.curator-card>img,.collection-copy h3 a,.publication h3 a,.dataset-links a,.read-link,figcaption a,.curator-role a,.archive-entry-card h3,.photo-details>summary,.research-details>summary,.support-list>summary{transition:none}
+  .archive-entry-card:hover,.stat:hover,.collection figure>a:hover img,.process-photo-link:hover img,.album figure>a:hover img,.pandemic-gallery figure>a:hover img,.about figure>a:hover img,.contribution figure>a:hover img{transform:none}
+}

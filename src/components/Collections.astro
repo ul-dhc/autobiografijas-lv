@@ -1,0 +1,121 @@
+---
+import type { Lang } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+import PandemicFeature from "./PandemicFeature.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"collections"} class={"shell section collections"}>
+  <div class={"section-heading"}>
+    <div>
+      <h2>
+        {en ? "A closer look at the collections" : "Ieskaties kolekcijās"}
+      </h2>
+      <p>
+        {en ? "Different people, times and handwriting. From school days to journeys abroad and recollections of a lifetime." : "Dažādi cilvēki, laikmeti un rokraksti. No skolas dienām līdz tāliem ceļojumiem un atmiņām par veselu mūžu."}
+      </p>
+    </div>
+    <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/index?CollectionSearch%5Brepository_id%5D=1115628" : "https://garamantas.lv/lv/collection/index?CollectionSearch%5Brepository_id%5D=1115628"}>
+      {en ? "All collections" : "Visas kolekcijas"}
+    </a>
+  </div>
+  <details class={"photo-details"} open>
+    <summary>
+      {en ? "Selected collections" : "Kolekciju izlase"}
+      <span>
+        {"3"}
+      </span>
+    </summary>
+    <div class={"collection-grid"}>
+      <article class={"collection collection-0"}>
+        <figure>
+          <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"} aria-label={en ? "Elma Marija Vanags’s diary" : "Elmas Marijas Vanags dienasgrāmata"}>
+            <AssetImage file={"elma-young.jpg"} alt={en ? "Photograph from the Elma Marija Vanags collection" : "Fotogrāfija no Elmas Marijas Vanags kolekcijas"} class="" loading="lazy" />
+          </a>
+          <figcaption>
+            {en ? "Photograph from the Elma Marija Vanags collection " : "Fotogrāfija no Elmas Marijas Vanags kolekcijas "}
+            <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+              {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+            </a>
+          </figcaption>
+        </figure>
+        <div class={"collection-copy"}>
+          <p class={"date"}>
+            {"1944–1945"}
+          </p>
+          <h3>
+            <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+              {en ? "Elma Marija Vanags’s diary" : "Elmas Marijas Vanags dienasgrāmata"}
+            </a>
+          </h3>
+          <p>
+            {en ? "A teenager’s account of leaving Riga as a refugee and living in Germany. Photographs and drawings accompany her diary." : "Pusaudzes pieraksti par došanos bēgļu gaitās no Rīgas un dzīvi Vācijā. Dienasgrāmatu papildina fotogrāfijas un zīmējumi."}
+          </p>
+          <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+            {en ? "Read on garamantas.lv" : "Lasīt garamantas.lv"}
+          </a>
+        </div>
+      </article>
+      <article class={"collection collection-1"}>
+        <figure>
+          <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"} aria-label={en ? "Irma Vīksniņa’s diary" : "Irmas Vīksniņas dienasgrāmata"}>
+            <AssetImage file={"irma-drawings.jpg"} alt={en ? "A spread from Irma Vīksniņa’s diary with drawings" : "Irmas Vīksniņas dienasgrāmatas atvērums ar zīmējumiem"} class="" loading="lazy" />
+          </a>
+          <figcaption>
+            {en ? "A spread from Irma Vīksniņa’s diary with drawings " : "Irmas Vīksniņas dienasgrāmatas atvērums ar zīmējumiem "}
+            <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+              {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+            </a>
+          </figcaption>
+        </figure>
+        <div class={"collection-copy"}>
+          <p class={"date"}>
+            {"1941–1942"}
+          </p>
+          <h3>
+            <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+              {en ? "Irma Vīksniņa’s diary" : "Irmas Vīksniņas dienasgrāmata"}
+            </a>
+          </h3>
+          <p>
+            {en ? "A secondary school student’s everyday life and experiences during the Second World War. Personal writings, drawings and recollections of school days." : "Vidusskolnieces ikdiena un Otrā pasaules kara pieredze. Personiski pieraksti, zīmējumi un atmiņas par skolas laiku."}
+          </p>
+          <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+            {en ? "Read on garamantas.lv" : "Lasīt garamantas.lv"}
+          </a>
+        </div>
+      </article>
+      <article class={"collection collection-2"}>
+        <figure>
+          <a href={en ? "https://garamantas.lv/en/collection/1311692" : "https://garamantas.lv/lv/collection/1311692"} aria-label={en ? "Captain P. Zolts’s scout group diary" : "Kapteiņa P. Zolta skautu saimes dienasgrāmata"}>
+            <AssetImage file={"scouts-cover.jpg"} alt={en ? "The cover of Captain P. Zolts’s scout group diary" : "Kapteiņa P. Zolta skautu saimes dienasgrāmatas vāks"} class="" loading="lazy" />
+          </a>
+          <figcaption>
+            {en ? "The cover of Captain P. Zolts’s scout group diary " : "Kapteiņa P. Zolta skautu saimes dienasgrāmatas vāks "}
+            <a href={en ? "https://garamantas.lv/en/collection/1311692" : "https://garamantas.lv/lv/collection/1311692"}>
+              {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+            </a>
+          </figcaption>
+        </figure>
+        <div class={"collection-copy"}>
+          <p class={"date"}>
+            {"1938–1939"}
+          </p>
+          <h3>
+            <a href={en ? "https://garamantas.lv/en/collection/1311692" : "https://garamantas.lv/lv/collection/1311692"}>
+              {en ? "Captain P. Zolts’s scout group diary" : "Kapteiņa P. Zolta skautu saimes dienasgrāmata"}
+            </a>
+          </h3>
+          <p>
+            {en ? "Hikes, training and shared adventures. A scout group’s diary filled with drawings, photographs and humour." : "Pārgājieni, mācības un kopīgi piedzīvojumi. Skautu saimes dienasgrāmata ar zīmējumiem, fotogrāfijām un humoru."}
+          </p>
+          <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/1311692" : "https://garamantas.lv/lv/collection/1311692"}>
+            {en ? "Read on garamantas.lv" : "Lasīt garamantas.lv"}
+          </a>
+        </div>
+      </article>
+    </div>
+  </details>
+  <PandemicFeature lang={lang} />
+</section>

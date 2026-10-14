@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen",
+  "prompt_for_each_portrait": "Use case: identity-preserve. Edit target: the supplied real portrait photograph. Prepare a consistent staff headshot for an archive website. Crop and reframe to a square head-and-shoulders portrait, centred horizontally, entire hair and top of head visible with a small margin, eye line at approximately 40 percent of image height, shoulders visible at bottom. Replace ONLY the existing background with a flat neutral very light grey #eeedf0. Keep the original person's face, facial proportions, eyes, expression, age, skin texture, hair, clothing and photographic character unchanged. Do not beautify, retouch skin, invent facial features, restyle hair or clothing, or change pose. Use original subject pixels as faithfully as possible, not a reimagined portrait. Exclude objects below the shoulder crop (cups and hands) by cropping, not by inventing new body parts. No text, logos, watermark or decorative effects. Produce one single portrait, not a collage.",
+  "inputs": {
+    "sanita": "portrait-sanita-original.png",
+    "ilze": "portrait-ilze.png",
+    "elvira": "portrait-elvira.png"
+  },
+  "outputs": {
+    "sanita": "portrait-sanita-unified.png",
+    "ilze": "portrait-ilze-unified.png",
+    "elvira": "portrait-elvira-unified.png"
+  },
+  "originals_preserved": true
+}

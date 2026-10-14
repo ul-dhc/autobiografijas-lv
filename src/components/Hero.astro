@@ -1,0 +1,61 @@
+---
+import type { Lang } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section class={"shell hero"}>
+  <div class={"hero-copy"}>
+    <h1>
+      {en ? <Fragment>ALF Autobiography<br />Collection</Fragment> : <Fragment><span class="title-prefix">Latviešu folkloras krātuves</span>Autobiogrāfiju<br />krājums</Fragment>}
+    </h1>
+    <p class={"intro"}>
+      {en ? "A collection of the Archives of Latvian Folklore at the Institute of Literature, Folklore and Art, University of Latvia, jointly developed with the Digital Humanities Centre at the University of Latvia Faculty of Humanities." : "LU LFMI Latviešu folkloras krātuves kolekcija, kuru kopīgi veido LU LFMI Latviešu folkloras krātuve un LU HZF Digitālo humanitāro zinātņu centrs."}
+    </p>
+    <a class="read-link hero-about" href="#about">{en ? 'About the collection' : 'Par krājumu'}</a>
+    <div class={"hero-links"}>
+      <a class={"primary"} href={"#archive"}>
+        {en ? "Read the collection" : "Lasīt krājumu"}
+      </a>
+      <a class={"read-link"} href={"#contribute"}>
+        {en ? "Contribute your materials" : "Iesniegt savus materiālus"}
+      </a>
+    </div>
+  </div>
+  <div class={"album"}>
+    <figure class={"album-cover"}>
+      <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+        <AssetImage file={"elma-portrait.jpg"} alt={en ? "Photograph from the Elma Marija Vanags collection" : "Fotogrāfija no Elmas Marijas Vanags kolekcijas"} class="" loading="eager" />
+      </a>
+      <figcaption>
+        {en ? "Photograph from the Elma Marija Vanags collection " : "Fotogrāfija no Elmas Marijas Vanags kolekcijas "}
+        <a href={en ? "https://garamantas.lv/en/collection/1510251" : "https://garamantas.lv/lv/collection/1510251"}>
+          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+        </a>
+      </figcaption>
+    </figure>
+    <figure class={"album-child"}>
+      <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+        <AssetImage file={"irma-cover.jpg"} alt={en ? "The cover of Irma Vīksniņa’s diary" : "Irmas Vīksniņas dienasgrāmatas vāks"} class="" loading="eager" />
+      </a>
+      <figcaption>
+        {en ? "The cover of Irma Vīksniņa’s diary " : "Irmas Vīksniņas dienasgrāmatas vāks "}
+        <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+        </a>
+      </figcaption>
+    </figure>
+    <figure class={"album-page"}>
+      <a href={en ? "https://garamantas.lv/en/unit/1418345/LFK-Ak-166-77#files" : "https://garamantas.lv/lv/unit/1418345/LFK-Ak-166-77#files"}>
+        <AssetImage file={"anna-pandemic-1.jpg"} alt={en ? "A spread from Anna Meiere Logina’s pandemic diary" : "Annas Meieres Loginas pandēmijas dienasgrāmatas atvērums"} class="" loading="eager" />
+      </a>
+      <figcaption>
+        {"Anna Meiere Logina · 2020 "}
+        <a href={en ? "https://garamantas.lv/en/unit/1418345/LFK-Ak-166-77#files" : "https://garamantas.lv/lv/unit/1418345/LFK-Ak-166-77#files"}>
+          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+</section>

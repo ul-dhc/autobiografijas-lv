@@ -1,0 +1,41 @@
+---
+import AssetImage from './AssetImage.astro';
+import type { Lang } from '../data/urls';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const diaryUrl = `https://garamantas.lv/${lang}/unit/1418345/LFK-Ak-166-77#files`;
+const bookUrl = 'https://www.routledge.com/Writing-COVID-19-Lives/Gammel-Wang/p/book/9781003735595';
+---
+<details class="photo-details" open>
+  <summary>{en ? 'The pandemic in an illustrated diary' : 'Pandēmija ilustrētā dienasgrāmatā'}</summary>
+  <div class="pandemic-feature">
+    <div class="pandemic-copy">
+      <p class="date">2020 · LFK Ak 166, 77</p>
+      <h3>Anna Meiere Logina</h3>
+      <p>{en ? 'Riga, 18–30 March 2020. Everyday life recorded in words and drawings, from the Pandemic Diaries collection.' : 'Rīga, 2020. gada 18.–30. marts. Rakstīti un zīmēti ikdienas pieraksti no pandēmijas dienasgrāmatu kolekcijas.'}</p>
+      <a class="read-link" href={diaryUrl}>{en ? 'Read on garamantas.lv' : 'Lasīt garamantas.lv'}</a>
+      <a class="read-link" href={`https://garamantas.lv/${lang}/collection/1415829`}>{en ? 'All Pandemic Diaries' : 'Visas pandēmijas dienasgrāmatas'}</a>
+    </div>
+    <div class="pandemic-gallery pandemic-single">
+      <figure>
+        <a href={diaryUrl}><AssetImage file="anna-pandemic-4.jpg" alt={en ? 'Anna Meiere Logina’s diary, 25 March 2020: a drawing of working on a laptop in bed.' : 'Annas Meieres Loginas dienasgrāmata, 2020. gada 25. marts: zīmējums ar darbu pie datora gultā.'} /></a>
+        <figcaption>Anna Meiere Logina · 25.03.2020. <a href={diaryUrl}>{en ? 'Source: garamantas.lv' : 'Avots: garamantas.lv'}</a></figcaption>
+      </figure>
+    </div>
+  </div>
+  <article class="pandemic-book" aria-labelledby="pandemic-book-title">
+    <figure>
+      <a href={bookUrl}><AssetImage file="writing-covid-19-lives-cover.png" alt="Writing COVID-19 Lives. Edited by Irene Gammel and Jason Wang. Routledge." /></a>
+      <figcaption>{en ? 'Book cover · Routledge' : 'Grāmatas vāks · Routledge'}</figcaption>
+    </figure>
+    <div>
+      <p class="date">Routledge · 2026</p>
+      <h3 id="pandemic-book-title"><a href={bookUrl}>Writing COVID-19 Lives</a></h3>
+      <p class="book-editors">{en ? 'Edited by Irene Gammel and Jason Wang.' : 'Redaktori: Irene Gammel un Jason Wang.'}</p>
+      <p>{en ? 'A drawing from Anna Meiere Logina’s diary appears on the cover of this research volume. The book explores how life writing helped people make sense of and document the pandemic. Poetry, memoirs, autofiction, photographs, diaries and digital stories reveal experiences of insecurity, uncertainty and loss.' : 'Annas Meieres Loginas dienasgrāmatas zīmējums izmantots šī zinātnisko rakstu krājuma vākam. Grāmata pēta, kā dzīves pieraksti palīdzējuši izprast un dokumentēt pandēmijas pieredzi. Dzeja, atmiņas, autofikcija, fotogrāfijas, dienasgrāmatas un digitālie stāsti atklāj nedrošības, nenoteiktības un zaudējuma izjūtas.'}</p>
+      <p>{en ? 'The volume brings together research from Canada, the United States, China, Latvia, Peru, the United Kingdom and Spain.' : 'Krājumā apkopoti pētījumi no Kanādas, ASV, Ķīnas, Latvijas, Peru, Apvienotās Karalistes un Spānijas.'}</p>
+      <a class="read-link" href={bookUrl}>{en ? 'About the book at Routledge' : 'Par grāmatu Routledge vietnē'}</a>
+    </div>
+  </article>
+</details>

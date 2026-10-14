@@ -1,0 +1,30 @@
+---
+import type { Lang } from "../data/urls";
+import { localUrl } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+import processPhotos from "../data/process-photos.json";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"process"} class={"shell section process-section"}>
+  <div class={"section-heading"}>
+    <div>
+      <h2>
+        {en ? "A collection built through encounters" : "Krājums top satikšanās reizēs"}
+      </h2>
+      <p>
+        {en ? "Conversations, leafing through diaries and work in the archive. A glimpse into how the collection grows." : "Sarunas, dienasgrāmatu pārlapošana un darbs arhīvā. Ieskats krājuma veidošanā."}
+      </p>
+    </div>
+  </div>
+  <details class={"photo-details"}>
+    <summary>
+      {en ? "Photographs of our work" : "Darba procesa fotogrāfijas"}
+      <span>
+        {"8"}
+      </span>
+    </summary>
+    <div class="process-gallery">{processPhotos.map(photo => <figure><a class="process-photo-link" href={localUrl('assets/' + photo.file)} aria-label={photo[lang] + (en ? ' – View full photograph' : ' – Skatīt pilnu attēlu')}><AssetImage file={photo.file} alt={photo[lang]} /></a><figcaption>{photo[lang]}</figcaption></figure>)}</div>
+  </details>
+</section>

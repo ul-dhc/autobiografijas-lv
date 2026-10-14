@@ -1,0 +1,88 @@
+---
+import type { Lang } from "../data/urls";
+import supporters from "../data/supporters.json";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"supporters"} class={"shell section supporters"}>
+  <div class={"support-heading"}>
+    <h2>
+      {en ? "Thank you for your support" : "Paldies par ieguldījumu"}
+    </h2>
+    <p>
+      {en ? "The collection grows through everyone who shares personal and family writings, helps preserve them and makes them accessible to others." : "Krājumu veido arī ikviens, kurš dalās ar saviem un ģimenē glabātajiem pierakstiem, palīdz tos saglabāt un dara tos pieejamus citiem."}
+    </p>
+  </div>
+  <div class={"funding"}>
+    <h3>
+      {en ? "Financial supporters" : "Finansiālie atbalstītāji"}
+    </h3>
+    <ul>
+      <li>
+        <strong>
+          {"Latvijas Zinātnes padome"}
+        </strong>
+        <span>
+          {"Projekts \"Sevis dokumentēšana: inovatīvi modeļi autobiogrāfiskā naratīva interpretācijā un izpratnē\" lzp-2018/1-0073"}
+        </span>
+      </li>
+      <li>
+        <strong>
+          {"LR Izglītības un zinātnes ministrija"}
+        </strong>
+        <span>
+          {"LR Izglītības un zinātnes ministrijas budžeta apakšprogramma \"Krišjāņa Barona dainuskapis\" 05.04.00"}
+        </span>
+      </li>
+      <li>
+        <strong>
+          {"Valsts kultūrkapitāla fonds"}
+        </strong>
+        <span>
+          {"VKKF projekts \"Dzīves pierakstīšanas tradīciju dokumentēšana\""}
+        </span>
+      </li>
+      <li>
+        <strong>
+          {"Valsts kultūrkapitāla fonds · KultūrELPA"}
+        </strong>
+        <span>
+          {"VKKF mērķprogrammas “KultūrELPA” projekts “Daudzveidīga tradicionālās kultūras satura nodrošinājums digitālajā vidē”"}
+        </span>
+      </li>
+      <li>
+        <strong>
+          {"Latviešu fonds"}
+        </strong>
+        <span>
+          {"Latviešu fonda projekts \"Autobiogrāfiju krājuma pilnveide\" (Nr. LF24L03)"}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <details class={"support-list"}>
+    <summary>
+      {en ? "Contributors and supporters " : "Materiālu iesniedzēji un atbalstītāji "}
+      <span>
+        {"301"}
+      </span>
+    </summary>
+    <div class={"support-body"}>
+      <ul class="support-names">{supporters.people.map(name => <li>{name}</li>)}</ul>
+    </div>
+  </details>
+  <details class={"support-list"}>
+    <summary>
+      {en ? "Media support" : "Informatīvais atbalsts"}
+    </summary>
+    <ul class="media-names">{supporters.media.map(name => <li>{name}</li>)}</ul>
+  </details>
+  <p class={"support-source"}>
+    {en ? "List from " : "Saraksts no "}
+    <a href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums#pateicibas" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums#pateicibas"}>
+      {"garamantas.lv"}
+    </a>
+    {en ? " · checked 14 October 2026." : " · pārbaudīts 14.10.2026."}
+  </p>
+</section>

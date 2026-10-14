@@ -1,0 +1,41 @@
+---
+import type { Lang } from "../data/urls";
+import AssetImage from "./AssetImage.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<section id={"contribute"} class={"contribute"}>
+  <div class={"shell contribution"}>
+    <figure>
+      <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+        <AssetImage file={"irma-writing.jpg"} alt={en ? "A spread from Irma Vīksniņa’s diary" : "Irmas Vīksniņas dienasgrāmatas atvērums"} class="" loading="lazy" />
+      </a>
+      <figcaption>
+        {en ? "A spread from Irma Vīksniņa’s diary " : "Irmas Vīksniņas dienasgrāmatas atvērums "}
+        <a href={en ? "https://garamantas.lv/en/collection/1117599" : "https://garamantas.lv/lv/collection/1117599"}>
+          {en ? "Source: garamantas.lv" : "Avots: garamantas.lv"}
+        </a>
+      </figcaption>
+    </figure>
+    <div>
+      <h2>
+        {en ? "Do you have a diary or written memories to share?" : "Vai pie Tevis glabājas kāda dienasgrāmata vai atmiņu pieraksti?"}
+      </h2>
+      <p>
+        {en ? "We welcome personal writings kept by you or your family: diaries, life stories, memoirs, letters and born-digital autobiographical materials." : "Aicinām krājumam uzticēt savus vai ģimenē saglabātos pierakstus. Var iesniegt dienasgrāmatas, dzīvesstāstus, atmiņas, vēstules un digitāli radītus autobiogrāfiskus materiālus."}
+      </p>
+      <p>
+        {en ? "You can keep the originals. We will agree on digitisation and on who can access the materials." : "Oriģinālus vari paturēt pie sevis. Vienosimies par digitalizēšanu un par to, kam materiāli būs pieejami."}
+      </p>
+      <div class={"contribution-links"}>
+        <a class={"primary"} href={"mailto:garamantas@lulfmi.lv"}>
+          {en ? "Write to the collection curators" : "Rakstīt krājuma veidotājiem"}
+        </a>
+        <a class={"read-link"} href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums#materialu-iesniegsana"}>
+          {en ? "About contributing materials" : "Par materiālu iesniegšanu"}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Lang } from "../data/urls";
+import Hero from "./Hero.astro";
+import CollectionStats from "./CollectionStats.astro";
+import Collections from "./Collections.astro";
+import Pudelis from "./Pudelis.astro";
+import ArchiveLinks from "./ArchiveLinks.astro";
+import About from "./About.astro";
+import ProcessGallery from "./ProcessGallery.astro";
+import Research from "./Research.astro";
+import Contribute from "./Contribute.astro";
+import Curators from "./Curators.astro";
+import Supporters from "./Supporters.astro";
+import Institutions from "./Institutions.astro";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+---
+<BaseLayout lang={lang}>
+  <Hero lang={lang} />
+  <ArchiveLinks lang={lang} />
+  <CollectionStats lang={lang} />
+  <Collections lang={lang} />
+  <Pudelis lang={lang} />
+  <About lang={lang} />
+  <ProcessGallery lang={lang} />
+  <Research lang={lang} />
+  <Contribute lang={lang} />
+  <Curators lang={lang} />
+  <Supporters lang={lang} />
+  <Institutions lang={lang} />
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import type { Lang } from "../data/urls";
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const en = lang === "en";
+---
+<footer id={"contact"}>
+  <div class={"shell contact"}>
+    <div>
+      <h2>
+        {en ? "Get in touch" : "Sazinies ar mums"}
+      </h2>
+      <p>
+        {en ? "For questions about the collection and contributing materials:" : "Jautājumiem par krājumu un materiālu iesniegšanu:"}
+      </p>
+      <a class={"email"} href={"mailto:garamantas@lulfmi.lv"}>
+        <svg class={"mail-icon"} aria-hidden={"true"} focusable={"false"} xmlns={"http://www.w3.org/2000/svg"} width={"24"} height={"24"} viewBox={"0 0 24 24"} fill={"none"} stroke={"currentColor"} stroke-width={"2"} stroke-linecap={"round"} stroke-linejoin={"round"}>
+          <path d={"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"}>
+
+          </path>
+          <rect x={"2"} y={"4"} width={"20"} height={"16"} rx={"2"}>
+
+          </rect>
+        </svg>
+        <span>
+          {"garamantas@lulfmi.lv"}
+        </span>
+      </a>
+    </div>
+    <div>
+      <p>
+        {en ? "Archives of Latvian Folklore" : "Latviešu folkloras krātuve"}
+        <br />
+        {en ? "Mūkusalas iela 3, Riga, LV-1423" : "Mūkusalas iela 3, Rīga, LV-1423"}
+        <br />
+        {en ? "National Library of Latvia, fifth floor" : "Latvijas Nacionālās bibliotēkas 5. stāvs"}
+      </p>
+      <p class={"visit"}>
+        {en ? "Visits by appointment." : "Apmeklējums, iepriekš piesakoties."}
+      </p>
+    </div>
+    <div class={"footer-links"}>
+      <a href={"https://www.facebook.com/autobiografijas.lv"}>
+        {"Facebook"}
+      </a>
+      <a href={en ? "https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums" : "https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums"}>
+        {"garamantas.lv"}
+      </a>
+    </div>
+  </div>
+  <div class={"shell footer-bottom"}>
+    <span>
+      {en ? "Archives of Latvian Folklore, ILFA, University of Latvia" : "LU LFMI Latviešu folkloras krātuve"}
+    </span>
+
+
+  </div>
+</footer>
