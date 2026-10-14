@@ -12,3 +12,6 @@ concept/
 
 # QA screenshots remain local.
 docs/localhost-*.png
+
+# Local extraction snapshots and workbook audits are not public website assets.
+docs/collections/

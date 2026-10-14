@@ -133,7 +133,7 @@ html[data-text-size="large"] .collection-grid{grid-template-columns:repeat(3,min
 
 /* Four complete archival images form a changing, layered composition. */
 .hero .album{position:relative;display:block;height:490px;max-width:550px;isolation:isolate}
-.hero .album::before{content:"";position:absolute;inset:45px 10px 25px 20px;background:#f0edf4;border-radius:48% 52% 44% 56%;z-index:-1}
+.hero .album::before{display:none}
 .hero .album figure{position:absolute;margin:0;background:white;padding:7px;border-radius:9px;box-shadow:0 12px 30px rgb(53 80 112 / .15);transition:transform .25s ease}
 .hero .album .album-cover{width:34%;left:4%;top:0;transform:rotate(-8deg);z-index:3}
 .hero .album .album-child{width:62%;right:2%;top:40px;transform:rotate(6deg);z-index:1}

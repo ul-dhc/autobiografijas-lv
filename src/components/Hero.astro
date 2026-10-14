@@ -38,7 +38,9 @@ const images = await Promise.all(files.map(async (file, index) => {
   const source = sources[`../assets/${file}`].default;
   const optimized = await getImage({ src: source, width: Math.min(800, source.width), format: 'webp', quality: 82 });
   const alt = index === 0 ? (en ? 'Photograph from the Elma Marija Vanags collection' : 'Fotogrāfija no Elmas Marijas Vanags kolekcijas') : index === 1 ? (en ? 'A diary cover' : 'Dienasgrāmatas vāks') : descriptions[index - 2][en ? 1 : 0];
-  return { src: optimized.src, width: source.width, height: source.height, alt, portrait: source.height > source.width };
+  const photoNumbers = [10, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+  const kind = index === 0 || (index >= 2 && photoNumbers.includes(index - 1)) ? "photo" : "manuscript";
+  return { src: optimized.src, width: source.width, height: source.height, alt, portrait: source.height > source.width, kind };
 }));
 const defaults = [images[0], images[4], images[11], images[5]];
 const frameClasses = ["album-cover", "album-child", "album-detail", "album-note"];
@@ -49,13 +51,10 @@ const frameClasses = ["album-cover", "album-child", "album-detail", "album-note"
     <h1>
       {en ? <Fragment>ALF Autobiography<br />Collection</Fragment> : <Fragment><span class="title-prefix">Latviešu folkloras krātuves</span>Autobiogrāfiju<br />krājums</Fragment>}
     </h1>
-    <p class={"intro"}>
-      {en ? "A collection of the Archives of Latvian Folklore at the Institute of Literature, Folklore and Art, University of Latvia, jointly developed with the Digital Humanities Centre at the University of Latvia Faculty of Humanities." : "LU LFMI Latviešu folkloras krātuves kolekcija, kuru kopīgi veido LU LFMI Latviešu folkloras krātuve un LU HZF Digitālo humanitāro zinātņu centrs."}
-    </p>
     <a class="read-link hero-about" href="#about">{en ? 'About the collection' : 'Par krājumu'}</a>
     <div class={"hero-links"}>
       <a class={"primary"} href={"#archive"}>
-        {en ? "Read the collection" : "Lasīt krājumu"}
+        {en ? "Explore the collection" : "Iepazīt krājumu"}
       </a>
       <a class={"read-link"} href={"#contribute"}>
         {en ? "Contribute your materials" : "Iesniegt savus materiālus"}
@@ -72,7 +71,7 @@ const frameClasses = ["album-cover", "album-child", "album-detail", "album-note"
 </section>
 
 <script>
-  type CollageImage = { src: string; width: number; height: number; alt: string; portrait: boolean };
+  type CollageImage = { src: string; width: number; height: number; alt: string; portrait: boolean; kind: "photo" | "manuscript" };
   const collage = document.querySelector<HTMLElement>('[data-collage-images]');
   if (collage) {
     const images: CollageImage[] = JSON.parse(collage.dataset.collageImages || '[]');
@@ -84,12 +83,14 @@ const frameClasses = ["album-cover", "album-child", "album-detail", "album-note"
       }
       return result;
     };
-    const portraits = shuffled(images.filter(image => image.portrait));
-    const spreads = shuffled(images.filter(image => !image.portrait));
-    let selected = [portraits[0], spreads[0], portraits[1], spreads[1]];
+    const photoPortraits = shuffled(images.filter(image => image.kind === 'photo' && image.portrait));
+    const photoLandscapes = shuffled(images.filter(image => image.kind === 'photo' && !image.portrait));
+    const manuscriptPortraits = shuffled(images.filter(image => image.kind === 'manuscript' && image.portrait));
+    const manuscriptLandscapes = shuffled(images.filter(image => image.kind === 'manuscript' && !image.portrait));
+    const selected = [photoPortraits[0], manuscriptLandscapes[0], manuscriptPortraits[0], photoLandscapes[0]];
     try {
       const key = selected.map(image => image.src).join('|');
-      if (sessionStorage.getItem('hero-collage-pair') === key) selected[3] = spreads[2];
+      if (sessionStorage.getItem('hero-collage-pair') === key) selected[1] = manuscriptLandscapes[1];
       sessionStorage.setItem('hero-collage-pair', selected.map(image => image.src).join('|'));
     } catch { /* Random selection also works when browser storage is unavailable. */ }
     selected.forEach((image, index) => {

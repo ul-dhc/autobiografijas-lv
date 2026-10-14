@@ -2,6 +2,7 @@
 import type { Lang } from "../data/urls";
 import AssetImage from "./AssetImage.astro";
 import PandemicFeature from "./PandemicFeature.astro";
+import { catalogueUrl } from '../data/catalogue';
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const en = lang === "en";
@@ -16,7 +17,7 @@ const en = lang === "en";
         {en ? "Different people, times and handwriting. From school days to journeys abroad and recollections of a lifetime." : "Dažādi cilvēki, laikmeti un rokraksti. No skolas dienām līdz tāliem ceļojumiem un atmiņām par veselu mūžu."}
       </p>
     </div>
-    <a class={"read-link"} href={en ? "https://garamantas.lv/en/collection/index?CollectionSearch%5Brepository_id%5D=1115628" : "https://garamantas.lv/lv/collection/index?CollectionSearch%5Brepository_id%5D=1115628"}>
+    <a class={"read-link"} href={catalogueUrl(lang)}>
       {en ? "All collections" : "Visas kolekcijas"}
     </a>
   </div>

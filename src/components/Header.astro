@@ -1,22 +1,25 @@
 ---
 import type { Lang } from "../data/urls";
 import { localUrl } from "../data/urls";
-interface Props { lang: Lang; }
+import { catalogueUrl } from '../data/catalogue';
+interface Props { lang: Lang; subpage?: boolean; alternatePath?: string; }
 const { lang } = Astro.props;
 const en = lang === "en";
+const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' : '') : ''}#${id}`;
 ---
 <header class={"shell masthead"}>
   <nav aria-label={en ? "Main navigation" : "Galvenā navigācija"}>
-    <a href={"#archive"}>
+    {Astro.props.subpage && <a href={localUrl(en ? 'en/' : '')}>{en ? 'Home' : 'Sākums'}</a>}
+    <a href={catalogueUrl(lang)} aria-current={Astro.props.subpage ? 'page' : undefined}>
       {en ? "Collections" : "Kolekcijas"}
     </a>
-    <a href={"#research"}>
+    <a href={sectionUrl('research')}>
       {en ? "Research" : "Pētniecībai"}
     </a>
-    <a href={"#creators"}>
+    <a href={sectionUrl('creators')}>
       {en ? "Team" : "Komanda"}
     </a>
-    <a href={"#supporters"}>
+    <a href={sectionUrl('supporters')}>
       {en ? "Supporters" : "Atbalstītāji"}
     </a>
     <a href={"#contact"}>
@@ -27,7 +30,7 @@ const en = lang === "en";
     <button class={"text-size"} type={"button"} aria-label={en ? "Increase text size" : "Palielināt tekstu"} title={en ? "Increase text size" : "Palielināt tekstu"} aria-pressed={"false"}>
       {"A+"}
     </button>
-    <a class={"language"} href={en ? localUrl() : localUrl("en/")} lang={en ? "lv" : "en"} aria-label={en ? "Latviski" : "In English"}>
+    <a class={"language"} data-language-link href={Astro.props.alternatePath !== undefined ? localUrl(Astro.props.alternatePath) : en ? localUrl() : localUrl("en/")} lang={en ? "lv" : "en"} aria-label={en ? "Latviski" : "In English"}>
       {en ? "LV" : "EN"}
     </a>
   </div>

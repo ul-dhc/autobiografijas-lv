@@ -1,0 +1,24 @@
+---
+import type { ArchiveCollection } from '../data/catalogue';
+import type { Lang } from '../data/urls';
+import LucideIcon from './LucideIcon.astro';
+interface Props { collection: ArchiveCollection; lang: Lang; eager?: boolean; }
+const { collection, lang, eager = false } = Astro.props;
+---
+<div class="catalogue-image" data-catalogue-image>
+  {collection.image && <img src={collection.image.url} alt={lang === 'en' ? `Image from the collection “${collection.title.en || collection.title.lv}”` : collection.image.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" width="640" height="480" />}
+  <div class="catalogue-image-fallback" hidden={Boolean(collection.image)} aria-hidden="true">
+    <LucideIcon name="file-text" />
+    <span>{collection.reference}</span>
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLImageElement>('[data-catalogue-image] img').forEach(image => {
+    const fallback = () => {
+      image.hidden = true;
+      image.parentElement?.querySelector<HTMLElement>('.catalogue-image-fallback')?.removeAttribute('hidden');
+    };
+    image.addEventListener('error', fallback);
+    if (image.complete && image.naturalWidth === 0) fallback();
+  });
+</script>

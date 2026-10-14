@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CatalogueImage from './CatalogueImage.astro';
+import LucideIcon from './LucideIcon.astro';
+import { cataloguePath, catalogueUrl, localizedText, materialLabels, periodLabel, type ArchiveCollection } from '../data/catalogue';
+import type { Lang } from '../data/urls';
+import '../styles/catalogue.css';
+interface Props { collection: ArchiveCollection; lang: Lang; }
+const { collection, lang } = Astro.props;
+const en = lang === 'en';
+const title = localizedText(collection.title, lang);
+const description = localizedText(collection.shortDescription, lang);
+const languageNames: Record<string, Record<Lang, string>> = { lv: { lv: 'Latviešu', en: 'Latvian' }, ru: { lv: 'Krievu', en: 'Russian' } };
+const fields = [
+  { label: en ? 'Collection number' : 'Kolekcijas numurs', value: collection.reference },
+  { label: en ? 'Author' : 'Autors', value: collection.authors.join(', ') },
+  { label: en ? 'Writing period' : 'Rakstīšanas laikposms', value: periodLabel(collection, lang) },
+  { label: en ? 'Material type' : 'Materiāla veids', value: collection.materialTypes.map(type => materialLabels[type]?.[lang]).filter(Boolean).join(', ') },
+  { label: en ? 'Language' : 'Valoda', value: collection.languages.map(code => languageNames[code]?.[lang] ?? code).join(', ') },
+  { label: en ? 'Submitted by' : 'Iesniedzējs', value: collection.submitters.join(', ') },
+].filter(field => field.value);
+---
+<BaseLayout lang={lang} subpage pageTitle={`${title.text} | ${en ? 'Autobiography Collection' : 'Autobiogrāfiju krājums'}`} pageDescription={description.text || title.text} lvPath={`${cataloguePath('lv')}${collection.id}/`} enPath={`${cataloguePath('en')}${collection.id}/`}>
+  <section class="shell collection-detail">
+    <a class="catalogue-back" data-back-catalogue href={catalogueUrl(lang)}><LucideIcon name="arrow-left" /> {en ? 'All collections' : 'Visas kolekcijas'}</a>
+    <div class="collection-detail-layout"><figure><CatalogueImage collection={collection} lang={lang} eager />{collection.image && <figcaption>{en ? 'Image from the collection.' : 'Attēls no kolekcijas.'} <a href={collection.garamantasUrl[lang]}>{en ? 'Source: garamantas.lv' : 'Avots: garamantas.lv'}</a></figcaption>}</figure>
+      <div class="collection-detail-copy"><p class="collection-detail-reference">{collection.reference}</p><h1 lang={title.lang}>{title.text}</h1>
+        {description.text && <div class="collection-detail-description" lang={description.lang}>{en && description.lang === 'lv' && <p class="collection-description-language">Apraksts latviešu valodā · Description in Latvian</p>}{description.text.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)}</div>}
+        <a class="collection-source-button" href={collection.garamantasUrl[lang]} target="_blank" rel="noopener noreferrer">{en ? 'Open on Garamantas' : 'Atvērt Garamantās'} <LucideIcon name="arrow-up-right" /><span class="catalogue-sr">{en ? ' (opens in a new tab)' : ' (atveras jaunā cilnē)'}</span></a>
+        <dl class="collection-detail-metadata">{fields.map(field => <div><dt>{field.label}</dt><dd>{field.value}</dd></div>)}</dl>
+        {collection.id === '1415829' && <aside class="collection-pandemic-note"><h2>{en ? 'Share your pandemic diary' : 'Dalies ar savu pandēmijas dienasgrāmatu'}</h2><p>{en ? 'You can contribute your diary to this collection. Contact the Archives of Latvian Folklore to find out more.' : 'Šo kolekciju vari papildināt ar savu dienasgrāmatu. Par iesniegšanu sazinies ar Latviešu folkloras krātuvi.'}</p><a href="mailto:garamantas@lulfmi.lv">{en ? 'Contact the archive' : 'Sazināties ar krātuvi'} <LucideIcon name="arrow-up-right" /></a></aside>}
+      </div>
+    </div>
+    <a class="catalogue-back catalogue-bottom-back" data-back-catalogue href={catalogueUrl(lang)}><LucideIcon name="arrow-left" /> {en ? 'Back to collections' : 'Atgriezties kolekcijās'}</a>
+  </section>
+  <script>
+    const parameters = new URLSearchParams(location.search);
+    const retained = new URLSearchParams();
+    ['q', 'type', 'sort', 'view', 'limit'].forEach(key => { if (parameters.has(key)) retained.set(key, parameters.get(key)!); });
+    if (retained.size) document.querySelectorAll<HTMLAnchorElement>('[data-back-catalogue], [data-language-link]').forEach(link => { const url = new URL(link.href); url.search = retained.toString(); link.href = url.href; });
+  </script>
+</BaseLayout>

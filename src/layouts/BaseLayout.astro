@@ -4,13 +4,13 @@ import '../styles/interaction.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { localUrl, type Lang } from '../data/urls';
-interface Props { lang: Lang; }
+interface Props { lang: Lang; pageTitle?: string; pageDescription?: string; lvPath?: string; enPath?: string; subpage?: boolean; }
 const { lang } = Astro.props;
 const en = lang === 'en';
-const title = en ? 'ALF Autobiography Collection' : 'Latviešu folkloras krātuves Autobiogrāfiju krājums';
-const description = en
+const title = Astro.props.pageTitle ?? (en ? 'ALF Autobiography Collection' : 'Latviešu folkloras krātuves Autobiogrāfiju krājums');
+const description = Astro.props.pageDescription ?? (en
   ? 'Diaries, life stories, memoirs and letters. A collection jointly developed by the Archives of Latvian Folklore and the University of Latvia Digital Humanities Centre.'
-  : 'Dienasgrāmatas, dzīvesstāsti, atmiņas un vēstules. LU LFMI Latviešu folkloras krātuves un LU HZF Digitālo humanitāro zinātņu centra kopīgi veidota kolekcija.';
+  : 'Dienasgrāmatas, dzīvesstāsti, atmiņas un vēstules. LU LFMI Latviešu folkloras krātuves un LU HZF Digitālo humanitāro zinātņu centra kopīgi veidota kolekcija.');
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 ---
 <!doctype html>
@@ -20,12 +20,12 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
     <title>{title}</title><meta name="description" content={description} />
     <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:type" content="website" /><meta property="og:locale" content={en ? 'en_GB' : 'lv_LV'} />
     {canonical && <link rel="canonical" href={canonical} />}
-    {Astro.site && <><link rel="alternate" hreflang="lv" href={new URL(localUrl(), Astro.site)} /><link rel="alternate" hreflang="en" href={new URL(localUrl('en/'), Astro.site)} /></>}
+    {Astro.site && <><link rel="alternate" hreflang="lv" href={new URL(localUrl(Astro.props.lvPath ?? ''), Astro.site)} /><link rel="alternate" hreflang="en" href={new URL(localUrl(Astro.props.enPath ?? 'en/'), Astro.site)} /></>}
     <link rel="icon" type="image/svg+xml" href={localUrl('favicon.svg')} />
   </head>
   <body>
     <a class="skip" href="#main">{en ? 'Skip to content' : 'Pāriet uz saturu'}</a>
-    <Header lang={lang} />
+    <Header lang={lang} subpage={Astro.props.subpage} alternatePath={en ? Astro.props.lvPath : Astro.props.enPath} />
     <main id="main"><slot /></main>
     <Footer lang={lang} />
     <script>import '../scripts/interactions.js';</script>
