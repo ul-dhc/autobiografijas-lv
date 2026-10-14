@@ -15,7 +15,7 @@ npm run dev -- --host 127.0.0.1 --port 8765
 
 Latvian: http://127.0.0.1:8765/ · English: http://127.0.0.1:8765/en/
 
-Collection catalogue: `/kolekcijas/` and `/en/collections/`. Each collection has a static detail page at its Garamantas ID. Search covers both language versions, descriptions, verified names and archive numbers, including queries without Latvian diacritics. Filters, sorting and view choices stay in the URL when opening a detail page or switching languages. Without JavaScript, all collections and detail pages remain available.
+Collection catalogue: `/kolekcijas/` and `/en/collections/`. Each collection has a static detail page using its Garamantas ID and a readable title slug, for example `/kolekcijas/1119253/Adama-Purmala-dzivesstasts/`. Title slugs are localized and have Latvian diacritics removed. Search covers both language versions, descriptions, verified names and archive numbers, including queries without Latvian diacritics. Filters, sorting and view choices stay in the URL when opening a detail page or switching languages. Without JavaScript, all collections and detail pages remain available.
 
 ```sh
 npm run check

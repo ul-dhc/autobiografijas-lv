@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { collectionSlug } from '../src/data/collection-slug.mjs';
 const data = JSON.parse(await readFile('src/data/collections.json', 'utf8'));
 const base = ('/' + (process.env.BASE_PATH || '/').replace(/^\/+|\/+$/g, '') + '/').replace(/\/+/g, '/');
 const expectedFields = ['id', 'number', 'reference', 'title', 'shortDescription', 'languages', 'writingPeriod', 'materialTypes', 'authors', 'submitters', 'image', 'garamantasUrl'];
@@ -13,7 +14,8 @@ for (const collection of data.collections) {
 }
 assert.deepEqual(data.collections.find(c => c.id === '1119255').authors, [], 'An unnamed collection must not reveal an identity from authenticated metadata');
 assert.deepEqual(data.collections.find(c => c.id === '1153249').authors, [], 'A first-name-only collection must not reveal a fuller identity');
-const pages = ['kolekcijas/index.html', 'en/collections/index.html', ...data.collections.flatMap(c => [`kolekcijas/${c.id}/index.html`, `en/collections/${c.id}/index.html`])];
+assert.equal(collectionSlug('Ādama Purmaļa dzīvesstāsts'), 'Adama-Purmala-dzivesstasts');
+const pages = ['kolekcijas/index.html', 'en/collections/index.html', ...data.collections.flatMap(c => [`kolekcijas/${c.id}/${collectionSlug(c.title.lv)}/index.html`, `en/collections/${c.id}/${collectionSlug(c.title.en || c.title.lv)}/index.html`])];
 for (const page of pages) {
   const html = await readFile(resolve('dist', page), 'utf8');
   const english = page.startsWith('en/');

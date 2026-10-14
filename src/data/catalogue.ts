@@ -1,11 +1,17 @@
 import data from './collections.json';
 import { localUrl, type Lang } from './urls';
+import { collectionSlug } from './collection-slug.mjs';
 
 export const catalogue = data.collections;
 export type ArchiveCollection = (typeof catalogue)[number];
 export const cataloguePath = (lang: Lang) => lang === 'en' ? 'en/collections/' : 'kolekcijas/';
 export const catalogueUrl = (lang: Lang) => localUrl(cataloguePath(lang));
-export const collectionUrl = (id: string, lang: Lang) => localUrl(`${cataloguePath(lang)}${id}/`);
+export const collectionPath = (collection: ArchiveCollection, lang: Lang) => `${cataloguePath(lang)}${collection.id}/${collectionSlug(collection.title[lang] || collection.title.lv)}/`;
+export const collectionUrl = (id: string, lang: Lang) => {
+  const collection = catalogue.find(item => item.id === id);
+  if (!collection) throw new Error(`Unknown collection: ${id}`);
+  return localUrl(collectionPath(collection, lang));
+};
 export const normalizeSearch = (value: string) => value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('lv').replace(/\s+/g, ' ').trim();
 export const searchText = (collection: ArchiveCollection) => normalizeSearch([
   collection.reference, ...Object.values(collection.title),

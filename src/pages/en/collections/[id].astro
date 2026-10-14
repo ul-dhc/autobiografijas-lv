@@ -1,7 +1,0 @@
----
-import CollectionDetail from '../../../components/CollectionDetail.astro';
-import { catalogue } from '../../../data/catalogue';
-export function getStaticPaths() { return catalogue.map(collection => ({ params: { id: collection.id }, props: { collection } })); }
-const { collection } = Astro.props;
----
-<CollectionDetail collection={collection} lang="en" />

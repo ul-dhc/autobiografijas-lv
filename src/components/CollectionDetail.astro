@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CatalogueImage from './CatalogueImage.astro';
 import LucideIcon from './LucideIcon.astro';
-import { cataloguePath, catalogueUrl, localizedText, materialLabels, periodLabel, type ArchiveCollection } from '../data/catalogue';
+import { collectionPath, catalogueUrl, localizedText, materialLabels, periodLabel, type ArchiveCollection } from '../data/catalogue';
 import type { Lang } from '../data/urls';
 import '../styles/catalogue.css';
 interface Props { collection: ArchiveCollection; lang: Lang; }
@@ -20,13 +20,13 @@ const fields = [
   { label: en ? 'Submitted by' : 'Iesniedzējs', value: collection.submitters.join(', ') },
 ].filter(field => field.value);
 ---
-<BaseLayout lang={lang} subpage pageTitle={`${title.text} | ${en ? 'Autobiography Collection' : 'Autobiogrāfiju krājums'}`} pageDescription={description.text || title.text} lvPath={`${cataloguePath('lv')}${collection.id}/`} enPath={`${cataloguePath('en')}${collection.id}/`}>
+<BaseLayout lang={lang} subpage pageTitle={`${title.text} | ${en ? 'Autobiography Collection' : 'Autobiogrāfiju krājums'}`} pageDescription={description.text || title.text} lvPath={collectionPath(collection, 'lv')} enPath={collectionPath(collection, 'en')}>
   <section class="shell collection-detail">
     <a class="catalogue-back" data-back-catalogue href={catalogueUrl(lang)}><LucideIcon name="arrow-left" /> {en ? 'All collections' : 'Visas kolekcijas'}</a>
     <div class="collection-detail-layout"><figure><CatalogueImage collection={collection} lang={lang} eager />{collection.image && <figcaption>{en ? 'Image from the collection.' : 'Attēls no kolekcijas.'} <a href={collection.garamantasUrl[lang]}>{en ? 'Source: garamantas.lv' : 'Avots: garamantas.lv'}</a></figcaption>}</figure>
       <div class="collection-detail-copy"><p class="collection-detail-reference">{collection.reference}</p><h1 lang={title.lang}>{title.text}</h1>
         {description.text && <div class="collection-detail-description" lang={description.lang}>{en && description.lang === 'lv' && <p class="collection-description-language">Apraksts latviešu valodā · Description in Latvian</p>}{description.text.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)}</div>}
-        <a class="collection-source-button" href={collection.garamantasUrl[lang]} target="_blank" rel="noopener noreferrer">{en ? 'Open on Garamantas' : 'Atvērt Garamantās'} <LucideIcon name="arrow-up-right" /><span class="catalogue-sr">{en ? ' (opens in a new tab)' : ' (atveras jaunā cilnē)'}</span></a>
+        <a class="collection-source-button" href={collection.garamantasUrl[lang]} target="_blank" rel="noopener noreferrer">{en ? 'Open on garamantas.lv' : 'Atvērt garamantas.lv'} <LucideIcon name="arrow-up-right" /><span class="catalogue-sr">{en ? ' (opens in a new tab)' : ' (atveras jaunā cilnē)'}</span></a>
         <dl class="collection-detail-metadata">{fields.map(field => <div><dt>{field.label}</dt><dd>{field.value}</dd></div>)}</dl>
         {collection.id === '1415829' && <aside class="collection-pandemic-note"><h2>{en ? 'Share your pandemic diary' : 'Dalies ar savu pandēmijas dienasgrāmatu'}</h2><p>{en ? 'You can contribute your diary to this collection. Contact the Archives of Latvian Folklore to find out more.' : 'Šo kolekciju vari papildināt ar savu dienasgrāmatu. Par iesniegšanu sazinies ar Latviešu folkloras krātuvi.'}</p><a href="mailto:garamantas@lulfmi.lv">{en ? 'Contact the archive' : 'Sazināties ar krātuvi'} <LucideIcon name="arrow-up-right" /></a></aside>}
       </div>

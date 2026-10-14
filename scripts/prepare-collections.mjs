@@ -16,6 +16,7 @@ const [lv, en, details] = await Promise.all([
 const languageOverrides = await read('language-overrides.json');
 const workbookSupplement = await read('workbook-public-supplement.json');
 const contentCorrections = await read('public-content-corrections.json');
+const englishDescriptions = JSON.parse(await readFile(new URL('src/data/collection-descriptions-en.json', root), 'utf8')); 
 const clean = value => (value ?? '').replace(/\u00a0/g, ' ').trim();
 const idOf = url => {
   const parsed = new URL(url);
@@ -137,7 +138,10 @@ const publicCollections = collections.map(collection => {
     number: collection.number,
     reference: collection.reference,
     title: collection.title,
-    shortDescription: collection.shortDescription,
+    shortDescription: {
+      ...collection.shortDescription,
+      en: collection.shortDescription.lv ? englishDescriptions[collection.id] ?? collection.shortDescription.en : collection.shortDescription.en,
+    },
     languages: collection.languages,
     writingPeriod: contentCorrections[collection.id]?.writingPeriod ?? supplement?.writingPeriod ?? { start: null, end: null },
     materialTypes: supplement?.materialTypes ?? [],
