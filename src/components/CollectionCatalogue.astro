@@ -15,7 +15,10 @@ const en = lang === 'en';
   <section class="shell catalogue" data-catalogue data-lang={lang}>
     <div class="catalogue-intro">
       <a class="catalogue-back" href={localUrl(en ? 'en/' : '')}><LucideIcon name="arrow-left" /> {en ? 'Autobiography Collection' : 'Autobiogrāfiju krājums'}</a>
-      <div class="catalogue-heading"><div><h1>{en ? 'Collections' : 'Kolekcijas'}</h1><p>{en ? 'Personal writings across generations. Discover diaries, life stories, memoirs and letters.' : 'Dzīves pieraksti no dažādiem laikmetiem. Iepazīsti dienasgrāmatas, dzīvesstāstus, atmiņas un vēstules.'}</p></div><span class="catalogue-total"><strong>{catalogue.length}</strong>{en ? 'collections' : 'kolekcija'}</span></div>
+      <div class="catalogue-heading"><div><h1>{en ? 'Collections' : 'Kolekcijas'}</h1><p>{en ? 'Personal writings across generations. Discover diaries, life stories, memoirs and letters.' : 'Dzīves pieraksti no dažādiem laikmetiem. Iepazīsti dienasgrāmatas, dzīvesstāstus, atmiņas un vēstules.'}</p>
+        <p>{en ? 'Browse the collections here and follow the links to ' : 'Šeit vari pārlūkot kolekcijas un pa saitēm doties uz '}<a href={en ? 'https://garamantas.lv/en/repository/1115628/Autobiografiju-krajums' : 'https://garamantas.lv/lv/repository/1115628/Autobiografiju-krajums'} target="_blank" rel="noopener noreferrer">garamantas.lv</a>{en ? ', where the digitised materials are preserved and made available.' : ', kur digitālie materiāli tiek glabāti un ir pieejami lasīšanai.'}</p>
+        <p><small>{en ? 'Updated ' : 'Atjaunots '}<time datetime="2026-11-16">{en ? '16 November 2026' : '16.11.2026.'}</time></small></p>
+      </div><span class="catalogue-total"><strong>{catalogue.length}</strong>{en ? 'collections' : 'kolekcija'}</span></div>
     </div>
     <form class="catalogue-controls" data-catalogue-controls data-mobile-filters-open="false" hidden role="search">
       <div class="catalogue-search-field"><label for="catalogue-query">{en ? 'Search collections' : 'Meklēt kolekcijās'}</label><div class="catalogue-input-wrap"><LucideIcon name="search" /><input id="catalogue-query" name="q" type="search" placeholder={en ? 'Title, description or name…' : 'Nosaukums, apraksts vai personas vārds…'} autocomplete="off" /></div></div>

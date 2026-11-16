@@ -5,16 +5,11 @@ interface Props { lang: Lang; }
 const { lang } = Astro.props;
 const en = lang === 'en';
 const format = new Intl.NumberFormat(en ? 'en-GB' : 'lv-LV');
-const links = [
-  `https://garamantas.lv/${lang}/collection/index?CollectionSearch%5Brepository_id%5D=1115628`,
-  `https://garamantas.lv/${lang}/file/index?FileSearch%5BrepositoryId%5D=1115628`,
-  `https://garamantas.lv/${lang}/illustration/index?IllustrationSearch%5Brepository%5D=1115628`,
-];
 const counts = [stats.collections, stats.files, stats.images];
 const labels = en ? ['collections','manuscript pages','images'] : ['kolekcija','manuskripta lappuses','attēli'];
 const checked = new Date(`${stats.checked}T12:00:00Z`);
 ---
 <section id="stats" class="shell stats" aria-label={en ? 'Collection in numbers' : 'Krājums skaitļos'}>
-  <div class="stats-grid">{counts.map((count,i) => <a class="stat" href={links[i]} target="_blank" rel="noopener noreferrer"><span class="stat-number" data-count={count} aria-hidden="true">{format.format(count)}</span><span class="sr-only">{count}</span><span class="stat-label">{labels[i]}</span></a>)}</div>
-  <p>{en ? 'Data from ' : 'Dati no '}<a href={stats.source} target="_blank" rel="noopener noreferrer">garamantas.lv</a> · <time datetime={stats.checked}>{new Intl.DateTimeFormat(en ? 'en-GB' : 'lv-LV', {timeZone:'Europe/Riga'}).format(checked)}</time></p>
+  <div class="stats-grid">{counts.map((count,i) => <div class="stat"><span class="stat-number" data-count={count} aria-hidden="true">{format.format(count)}</span><span class="sr-only">{count}</span><span class="stat-label">{labels[i]}</span></div>)}</div>
+  <p>{en ? 'Data from ' : 'Dati no '}garamantas.lv · <time datetime={stats.checked}>{new Intl.DateTimeFormat(en ? 'en-GB' : 'lv-LV', {timeZone:'Europe/Riga'}).format(checked)}</time></p>
 </section>
