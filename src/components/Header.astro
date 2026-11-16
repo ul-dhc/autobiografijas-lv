@@ -1,5 +1,6 @@
 ---
 import LucideIcon from "./LucideIcon.astro";
+import { showCollectionTeam } from "../data/features";
 import type { Lang } from "../data/urls";
 import { localUrl } from "../data/urls";
 import { catalogueUrl } from '../data/catalogue';
@@ -18,9 +19,9 @@ const sectionUrl = (id: string) => `${Astro.props.subpage ? localUrl(en ? 'en/' 
     <a href={sectionUrl('research')}>
       {en ? "Research" : "Pētniecībai"}
     </a>
-    <a href={sectionUrl('creators')}>
+    {showCollectionTeam && <a href={sectionUrl('creators')}>
       {en ? "Team" : "Komanda"}
-    </a>
+    </a>}
     <a href={sectionUrl('supporters')}>
       {en ? "Supporters" : "Atbalstītāji"}
     </a>
